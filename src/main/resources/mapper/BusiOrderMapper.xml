@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.BusiOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.BusiOrder" >
+    <id column="BUSI_CELLNO" property="busiCellno" jdbcType="INTEGER" />
+    <result column="BUSI_ORDER_DATE" property="busiOrderDate" jdbcType="TIMESTAMP" />
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="VARCHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+    <result column="OPER_ID" property="operId" jdbcType="INTEGER" />
+    <result column="BUSI_ORDER_ID" property="busiOrderId" jdbcType="VARCHAR" />
+    <result column="SIGNATURE" property="signature" jdbcType="VARCHAR" />
+    <result column="SIGNATURE_TYPE" property="signatureType" jdbcType="VARCHAR" />
+    <result column="BUSI_TRANS_TYPE" property="busiTransType" jdbcType="VARCHAR" />
+    <result column="BUSI_MERC_ID" property="busiMercId" jdbcType="VARCHAR" />
+    <result column="BUSI_AMT" property="busiAmt" jdbcType="DECIMAL" />
+    <result column="CUSTID" property="custid" jdbcType="INTEGER" />
+    <result column="SERIAL_ID" property="serialId" jdbcType="INTEGER" />
+    <result column="PROD_ID" property="prodId" jdbcType="INTEGER" />
+    <result column="PAYINFO" property="payinfo" jdbcType="VARCHAR" />
+    <result column="PAYTYPE" property="paytype" jdbcType="VARCHAR" />
+    <result column="PAYORG" property="payorg" jdbcType="VARCHAR" />
+    <result column="PAYNUM" property="paynum" jdbcType="VARCHAR" />
+    <result column="pay_flag" property="payFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BUSI_CELLNO, BUSI_ORDER_DATE, PROVINCE_CODE, EPARCHY_CODE, CITY_CODE, CHANNEL_ID, 
+    OPER_ID, BUSI_ORDER_ID, SIGNATURE, SIGNATURE_TYPE, BUSI_TRANS_TYPE, BUSI_MERC_ID, 
+    BUSI_AMT, CUSTID, SERIAL_ID, PROD_ID, PAYINFO, PAYTYPE, PAYORG, PAYNUM, pay_flag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.wobeyond.model.BusiOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from busi_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from busi_order
+    where BUSI_CELLNO = #{busiCellno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from busi_order
+    where BUSI_CELLNO = #{busiCellno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.wobeyond.model.BusiOrderExample" >
+    delete from busi_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.wobeyond.model.BusiOrder" >
+    insert into busi_order (BUSI_CELLNO, BUSI_ORDER_DATE, PROVINCE_CODE, 
+      EPARCHY_CODE, CITY_CODE, CHANNEL_ID, 
+      OPER_ID, BUSI_ORDER_ID, SIGNATURE, 
+      SIGNATURE_TYPE, BUSI_TRANS_TYPE, BUSI_MERC_ID, 
+      BUSI_AMT, CUSTID, SERIAL_ID, 
+      PROD_ID, PAYINFO, PAYTYPE, 
+      PAYORG, PAYNUM, pay_flag
+      )
+    values (#{busiCellno,jdbcType=INTEGER}, #{busiOrderDate,jdbcType=TIMESTAMP}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{eparchyCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{channelId,jdbcType=VARCHAR}, 
+      #{operId,jdbcType=INTEGER}, #{busiOrderId,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
+      #{signatureType,jdbcType=VARCHAR}, #{busiTransType,jdbcType=VARCHAR}, #{busiMercId,jdbcType=VARCHAR}, 
+      #{busiAmt,jdbcType=DECIMAL}, #{custid,jdbcType=INTEGER}, #{serialId,jdbcType=INTEGER}, 
+      #{prodId,jdbcType=INTEGER}, #{payinfo,jdbcType=VARCHAR}, #{paytype,jdbcType=VARCHAR}, 
+      #{payorg,jdbcType=VARCHAR}, #{paynum,jdbcType=VARCHAR}, #{payFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.wobeyond.model.BusiOrder" >
+    insert into busi_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="busiCellno != null" >
+        BUSI_CELLNO,
+      </if>
+      <if test="busiOrderDate != null" >
+        BUSI_ORDER_DATE,
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID,
+      </if>
+      <if test="operId != null" >
+        OPER_ID,
+      </if>
+      <if test="busiOrderId != null" >
+        BUSI_ORDER_ID,
+      </if>
+      <if test="signature != null" >
+        SIGNATURE,
+      </if>
+      <if test="signatureType != null" >
+        SIGNATURE_TYPE,
+      </if>
+      <if test="busiTransType != null" >
+        BUSI_TRANS_TYPE,
+      </if>
+      <if test="busiMercId != null" >
+        BUSI_MERC_ID,
+      </if>
+      <if test="busiAmt != null" >
+        BUSI_AMT,
+      </if>
+      <if test="custid != null" >
+        CUSTID,
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID,
+      </if>
+      <if test="prodId != null" >
+        PROD_ID,
+      </if>
+      <if test="payinfo != null" >
+        PAYINFO,
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE,
+      </if>
+      <if test="payorg != null" >
+        PAYORG,
+      </if>
+      <if test="paynum != null" >
+        PAYNUM,
+      </if>
+      <if test="payFlag != null" >
+        pay_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="busiCellno != null" >
+        #{busiCellno,jdbcType=INTEGER},
+      </if>
+      <if test="busiOrderDate != null" >
+        #{busiOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="busiOrderId != null" >
+        #{busiOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureType != null" >
+        #{signatureType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTransType != null" >
+        #{busiTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiMercId != null" >
+        #{busiMercId,jdbcType=VARCHAR},
+      </if>
+      <if test="busiAmt != null" >
+        #{busiAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="custid != null" >
+        #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="serialId != null" >
+        #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null" >
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="payinfo != null" >
+        #{payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payorg != null" >
+        #{payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        #{payFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.wobeyond.model.BusiOrderExample" resultType="java.lang.Integer" >
+    select count(*) from busi_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update busi_order
+    <set >
+      <if test="record.busiCellno != null" >
+        BUSI_CELLNO = #{record.busiCellno,jdbcType=INTEGER},
+      </if>
+      <if test="record.busiOrderDate != null" >
+        BUSI_ORDER_DATE = #{record.busiOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.provinceCode != null" >
+        PROVINCE_CODE = #{record.provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eparchyCode != null" >
+        EPARCHY_CODE = #{record.eparchyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityCode != null" >
+        CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelId != null" >
+        CHANNEL_ID = #{record.channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operId != null" >
+        OPER_ID = #{record.operId,jdbcType=INTEGER},
+      </if>
+      <if test="record.busiOrderId != null" >
+        BUSI_ORDER_ID = #{record.busiOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signature != null" >
+        SIGNATURE = #{record.signature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signatureType != null" >
+        SIGNATURE_TYPE = #{record.signatureType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiTransType != null" >
+        BUSI_TRANS_TYPE = #{record.busiTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiMercId != null" >
+        BUSI_MERC_ID = #{record.busiMercId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiAmt != null" >
+        BUSI_AMT = #{record.busiAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.custid != null" >
+        CUSTID = #{record.custid,jdbcType=INTEGER},
+      </if>
+      <if test="record.serialId != null" >
+        SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodId != null" >
+        PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.payinfo != null" >
+        PAYINFO = #{record.payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paytype != null" >
+        PAYTYPE = #{record.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payorg != null" >
+        PAYORG = #{record.payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paynum != null" >
+        PAYNUM = #{record.paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payFlag != null" >
+        pay_flag = #{record.payFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update busi_order
+    set BUSI_CELLNO = #{record.busiCellno,jdbcType=INTEGER},
+      BUSI_ORDER_DATE = #{record.busiOrderDate,jdbcType=TIMESTAMP},
+      PROVINCE_CODE = #{record.provinceCode,jdbcType=VARCHAR},
+      EPARCHY_CODE = #{record.eparchyCode,jdbcType=VARCHAR},
+      CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
+      CHANNEL_ID = #{record.channelId,jdbcType=VARCHAR},
+      OPER_ID = #{record.operId,jdbcType=INTEGER},
+      BUSI_ORDER_ID = #{record.busiOrderId,jdbcType=VARCHAR},
+      SIGNATURE = #{record.signature,jdbcType=VARCHAR},
+      SIGNATURE_TYPE = #{record.signatureType,jdbcType=VARCHAR},
+      BUSI_TRANS_TYPE = #{record.busiTransType,jdbcType=VARCHAR},
+      BUSI_MERC_ID = #{record.busiMercId,jdbcType=VARCHAR},
+      BUSI_AMT = #{record.busiAmt,jdbcType=DECIMAL},
+      CUSTID = #{record.custid,jdbcType=INTEGER},
+      SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      PAYINFO = #{record.payinfo,jdbcType=VARCHAR},
+      PAYTYPE = #{record.paytype,jdbcType=VARCHAR},
+      PAYORG = #{record.payorg,jdbcType=VARCHAR},
+      PAYNUM = #{record.paynum,jdbcType=VARCHAR},
+      pay_flag = #{record.payFlag,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.wobeyond.model.BusiOrder" >
+    update busi_order
+    <set >
+      <if test="busiOrderDate != null" >
+        BUSI_ORDER_DATE = #{busiOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        OPER_ID = #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="busiOrderId != null" >
+        BUSI_ORDER_ID = #{busiOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        SIGNATURE = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureType != null" >
+        SIGNATURE_TYPE = #{signatureType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTransType != null" >
+        BUSI_TRANS_TYPE = #{busiTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiMercId != null" >
+        BUSI_MERC_ID = #{busiMercId,jdbcType=VARCHAR},
+      </if>
+      <if test="busiAmt != null" >
+        BUSI_AMT = #{busiAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="custid != null" >
+        CUSTID = #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null" >
+        PROD_ID = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="payinfo != null" >
+        PAYINFO = #{payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payorg != null" >
+        PAYORG = #{payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        PAYNUM = #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        pay_flag = #{payFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BUSI_CELLNO = #{busiCellno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.BusiOrder" >
+    update busi_order
+    set BUSI_ORDER_DATE = #{busiOrderDate,jdbcType=TIMESTAMP},
+      PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=VARCHAR},
+      CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      OPER_ID = #{operId,jdbcType=INTEGER},
+      BUSI_ORDER_ID = #{busiOrderId,jdbcType=VARCHAR},
+      SIGNATURE = #{signature,jdbcType=VARCHAR},
+      SIGNATURE_TYPE = #{signatureType,jdbcType=VARCHAR},
+      BUSI_TRANS_TYPE = #{busiTransType,jdbcType=VARCHAR},
+      BUSI_MERC_ID = #{busiMercId,jdbcType=VARCHAR},
+      BUSI_AMT = #{busiAmt,jdbcType=DECIMAL},
+      CUSTID = #{custid,jdbcType=INTEGER},
+      SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      PROD_ID = #{prodId,jdbcType=INTEGER},
+      PAYINFO = #{payinfo,jdbcType=VARCHAR},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      PAYORG = #{payorg,jdbcType=VARCHAR},
+      PAYNUM = #{paynum,jdbcType=VARCHAR},
+      pay_flag = #{payFlag,jdbcType=INTEGER}
+    where BUSI_CELLNO = #{busiCellno,jdbcType=INTEGER}
+  </update>
+</mapper>

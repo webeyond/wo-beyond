@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.ProdMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.Prod" >
+    <id column="PROD_ID" property="prodId" jdbcType="INTEGER" />
+    <result column="PROD_TYPE" property="prodType" jdbcType="INTEGER" />
+    <result column="PROD_NAME" property="prodName" jdbcType="VARCHAR" />
+    <result column="COMBO_FEE" property="comboFee" jdbcType="DECIMAL" />
+    <result column="PROMISE_TIME" property="promiseTime" jdbcType="INTEGER" />
+    <result column="PRE_PAY_FEE" property="prePayFee" jdbcType="DECIMAL" />
+    <result column="DES_PIC" property="desPic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PROD_ID, PROD_TYPE, PROD_NAME, COMBO_FEE, PROMISE_TIME, PRE_PAY_FEE, DES_PIC
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.wobeyond.model.ProdExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prod
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from prod
+    where PROD_ID = #{prodId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from prod
+    where PROD_ID = #{prodId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.wobeyond.model.ProdExample" >
+    delete from prod
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.wobeyond.model.Prod" >
+    insert into prod (PROD_ID, PROD_TYPE, PROD_NAME, 
+      COMBO_FEE, PROMISE_TIME, PRE_PAY_FEE, 
+      DES_PIC)
+    values (#{prodId,jdbcType=INTEGER}, #{prodType,jdbcType=INTEGER}, #{prodName,jdbcType=VARCHAR}, 
+      #{comboFee,jdbcType=DECIMAL}, #{promiseTime,jdbcType=INTEGER}, #{prePayFee,jdbcType=DECIMAL}, 
+      #{desPic,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.wobeyond.model.Prod" >
+    insert into prod
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prodId != null" >
+        PROD_ID,
+      </if>
+      <if test="prodType != null" >
+        PROD_TYPE,
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME,
+      </if>
+      <if test="comboFee != null" >
+        COMBO_FEE,
+      </if>
+      <if test="promiseTime != null" >
+        PROMISE_TIME,
+      </if>
+      <if test="prePayFee != null" >
+        PRE_PAY_FEE,
+      </if>
+      <if test="desPic != null" >
+        DES_PIC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prodId != null" >
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="prodType != null" >
+        #{prodType,jdbcType=INTEGER},
+      </if>
+      <if test="prodName != null" >
+        #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="comboFee != null" >
+        #{comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promiseTime != null" >
+        #{promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="prePayFee != null" >
+        #{prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="desPic != null" >
+        #{desPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.wobeyond.model.ProdExample" resultType="java.lang.Integer" >
+    select count(*) from prod
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update prod
+    <set >
+      <if test="record.prodId != null" >
+        PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodType != null" >
+        PROD_TYPE = #{record.prodType,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodName != null" >
+        PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comboFee != null" >
+        COMBO_FEE = #{record.comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.promiseTime != null" >
+        PROMISE_TIME = #{record.promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.prePayFee != null" >
+        PRE_PAY_FEE = #{record.prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.desPic != null" >
+        DES_PIC = #{record.desPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update prod
+    set PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      PROD_TYPE = #{record.prodType,jdbcType=INTEGER},
+      PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
+      COMBO_FEE = #{record.comboFee,jdbcType=DECIMAL},
+      PROMISE_TIME = #{record.promiseTime,jdbcType=INTEGER},
+      PRE_PAY_FEE = #{record.prePayFee,jdbcType=DECIMAL},
+      DES_PIC = #{record.desPic,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.wobeyond.model.Prod" >
+    update prod
+    <set >
+      <if test="prodType != null" >
+        PROD_TYPE = #{prodType,jdbcType=INTEGER},
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="comboFee != null" >
+        COMBO_FEE = #{comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promiseTime != null" >
+        PROMISE_TIME = #{promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="prePayFee != null" >
+        PRE_PAY_FEE = #{prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="desPic != null" >
+        DES_PIC = #{desPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROD_ID = #{prodId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.Prod" >
+    update prod
+    set PROD_TYPE = #{prodType,jdbcType=INTEGER},
+      PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      COMBO_FEE = #{comboFee,jdbcType=DECIMAL},
+      PROMISE_TIME = #{promiseTime,jdbcType=INTEGER},
+      PRE_PAY_FEE = #{prePayFee,jdbcType=DECIMAL},
+      DES_PIC = #{desPic,jdbcType=VARCHAR}
+    where PROD_ID = #{prodId,jdbcType=INTEGER}
+  </update>
+</mapper>

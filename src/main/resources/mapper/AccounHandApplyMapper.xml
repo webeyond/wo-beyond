@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.AccounHandApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.AccounHandApply" >
+    <id column="ACCOUNT_HAND_APPLY_ID" property="accountHandApplyId" jdbcType="INTEGER" />
+    <result column="OPERATORID" property="operatorid" jdbcType="INTEGER" />
+    <result column="OPERATORNAME" property="operatorname" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+    <result column="DEPARTMENT" property="department" jdbcType="VARCHAR" />
+    <result column="CHANNEL" property="channel" jdbcType="VARCHAR" />
+    <result column="PROD_ID" property="prodId" jdbcType="INTEGER" />
+    <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+    <result column="PROD_NAME" property="prodName" jdbcType="VARCHAR" />
+    <result column="COMBO_FEE" property="comboFee" jdbcType="DECIMAL" />
+    <result column="PROMISE_TIME" property="promiseTime" jdbcType="INTEGER" />
+    <result column="PRE_PAY_FEE" property="prePayFee" jdbcType="DECIMAL" />
+    <result column="CUSTID" property="custid" jdbcType="INTEGER" />
+    <result column="REALNAMETYPE" property="realnametype" jdbcType="INTEGER" />
+    <result column="CUSTTYPE" property="custtype" jdbcType="INTEGER" />
+    <result column="REFCUSTID" property="refcustid" jdbcType="INTEGER" />
+    <result column="CERTTYPE" property="certtype" jdbcType="INTEGER" />
+    <result column="CERTNUM" property="certnum" jdbcType="VARCHAR" />
+    <result column="CERTADRESS" property="certadress" jdbcType="VARCHAR" />
+    <result column="CUSTOMERNAME" property="customername" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="TMPPHONE" property="tmpphone" jdbcType="VARCHAR" />
+    <result column="CUSTTYPE1" property="custtype1" jdbcType="VARCHAR" />
+    <result column="PSPTNUMBER" property="psptnumber" jdbcType="VARCHAR" />
+    <result column="SERIAL_ID" property="serialId" jdbcType="INTEGER" />
+    <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="SERIAL_PROVINCE" property="serialProvince" jdbcType="VARCHAR" />
+    <result column="SERIAL_CITY" property="serialCity" jdbcType="VARCHAR" />
+    <result column="BUSINESS_TYPE" property="businessType" jdbcType="VARCHAR" />
+    <result column="ADVANCE_LIMIT" property="advanceLimit" jdbcType="DECIMAL" />
+    <result column="MONTHFEE_LIMIT" property="monthfeeLimit" jdbcType="DECIMAL" />
+    <result column="MONTH_LIMIT" property="monthLimit" jdbcType="INTEGER" />
+    <result column="NICE_RULE_TAG" property="niceRuleTag" jdbcType="INTEGER" />
+    <result column="FEATURE_TYPE" property="featureType" jdbcType="VARCHAR" />
+    <result column="FEATURE_NAME" property="featureName" jdbcType="VARCHAR" />
+    <result column="GOOD_TYPE" property="goodType" jdbcType="VARCHAR" />
+    <result column="PAYINFO" property="payinfo" jdbcType="VARCHAR" />
+    <result column="PAYTYPE" property="paytype" jdbcType="VARCHAR" />
+    <result column="PAYORG" property="payorg" jdbcType="VARCHAR" />
+    <result column="PAYNUM" property="paynum" jdbcType="VARCHAR" />
+    <result column="SALEPRICE" property="saleprice" jdbcType="DECIMAL" />
+    <result column="COST" property="cost" jdbcType="DECIMAL" />
+    <result column="CARDPRICE" property="cardprice" jdbcType="DECIMAL" />
+    <result column="RESERVAPRICE" property="reservaprice" jdbcType="DECIMAL" />
+    <result column="RESOURCESBRANDCODE" property="resourcesbrandcode" jdbcType="VARCHAR" />
+    <result column="ORGDEVICEBRANDCODE" property="orgdevicebrandcode" jdbcType="VARCHAR" />
+    <result column="RESOURCESBRANDNAME" property="resourcesbrandname" jdbcType="VARCHAR" />
+    <result column="RESOURCESMODELCODE" property="resourcesmodelcode" jdbcType="VARCHAR" />
+    <result column="RESOURCESMODELNAME" property="resourcesmodelname" jdbcType="VARCHAR" />
+    <result column="RESOURCESSRCCODE" property="resourcessrccode" jdbcType="VARCHAR" />
+    <result column="RESOURCESSRCNAME" property="resourcessrcname" jdbcType="VARCHAR" />
+    <result column="RESOURCESSUPPLYCORP" property="resourcessupplycorp" jdbcType="VARCHAR" />
+    <result column="RESOURCESSERVICECORP" property="resourcesservicecorp" jdbcType="VARCHAR" />
+    <result column="RESOURCESCOLOR" property="resourcescolor" jdbcType="VARCHAR" />
+    <result column="MACHINETYPECODE" property="machinetypecode" jdbcType="VARCHAR" />
+    <result column="MACHINETYPENAME" property="machinetypename" jdbcType="VARCHAR" />
+    <result column="TERMINALTYPE" property="terminaltype" jdbcType="VARCHAR" />
+    <result column="TERMINALTSUBTYPE" property="terminaltsubtype" jdbcType="VARCHAR" />
+    <result column="SIMID" property="simid" jdbcType="INTEGER" />
+    <result column="IMSI" property="imsi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ACCOUNT_HAND_APPLY_ID, OPERATORID, OPERATORNAME, PROVINCE, CITY, DISTRICT, DEPARTMENT, 
+    CHANNEL, PROD_ID, PROD_TYPE, PROD_NAME, COMBO_FEE, PROMISE_TIME, PRE_PAY_FEE, CUSTID, 
+    REALNAMETYPE, CUSTTYPE, REFCUSTID, CERTTYPE, CERTNUM, CERTADRESS, CUSTOMERNAME, SEX, 
+    TMPPHONE, CUSTTYPE1, PSPTNUMBER, SERIAL_ID, SERIAL_NUMBER, SERIAL_PROVINCE, SERIAL_CITY, 
+    BUSINESS_TYPE, ADVANCE_LIMIT, MONTHFEE_LIMIT, MONTH_LIMIT, NICE_RULE_TAG, FEATURE_TYPE, 
+    FEATURE_NAME, GOOD_TYPE, PAYINFO, PAYTYPE, PAYORG, PAYNUM, SALEPRICE, COST, CARDPRICE, 
+    RESERVAPRICE, RESOURCESBRANDCODE, ORGDEVICEBRANDCODE, RESOURCESBRANDNAME, RESOURCESMODELCODE, 
+    RESOURCESMODELNAME, RESOURCESSRCCODE, RESOURCESSRCNAME, RESOURCESSUPPLYCORP, RESOURCESSERVICECORP, 
+    RESOURCESCOLOR, MACHINETYPECODE, MACHINETYPENAME, TERMINALTYPE, TERMINALTSUBTYPE, 
+    SIMID, IMSI
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.wobeyond.model.AccounHandApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from account_hand_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_hand_apply
+    where ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account_hand_apply
+    where ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.wobeyond.model.AccounHandApplyExample" >
+    delete from account_hand_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.wobeyond.model.AccounHandApply" >
+    insert into account_hand_apply (ACCOUNT_HAND_APPLY_ID, OPERATORID, OPERATORNAME, 
+      PROVINCE, CITY, DISTRICT, 
+      DEPARTMENT, CHANNEL, PROD_ID, 
+      PROD_TYPE, PROD_NAME, COMBO_FEE, 
+      PROMISE_TIME, PRE_PAY_FEE, CUSTID, 
+      REALNAMETYPE, CUSTTYPE, REFCUSTID, 
+      CERTTYPE, CERTNUM, CERTADRESS, 
+      CUSTOMERNAME, SEX, TMPPHONE, 
+      CUSTTYPE1, PSPTNUMBER, SERIAL_ID, 
+      SERIAL_NUMBER, SERIAL_PROVINCE, SERIAL_CITY, 
+      BUSINESS_TYPE, ADVANCE_LIMIT, MONTHFEE_LIMIT, 
+      MONTH_LIMIT, NICE_RULE_TAG, FEATURE_TYPE, 
+      FEATURE_NAME, GOOD_TYPE, PAYINFO, 
+      PAYTYPE, PAYORG, PAYNUM, 
+      SALEPRICE, COST, CARDPRICE, 
+      RESERVAPRICE, RESOURCESBRANDCODE, ORGDEVICEBRANDCODE, 
+      RESOURCESBRANDNAME, RESOURCESMODELCODE, 
+      RESOURCESMODELNAME, RESOURCESSRCCODE, RESOURCESSRCNAME, 
+      RESOURCESSUPPLYCORP, RESOURCESSERVICECORP, 
+      RESOURCESCOLOR, MACHINETYPECODE, MACHINETYPENAME, 
+      TERMINALTYPE, TERMINALTSUBTYPE, SIMID, 
+      IMSI)
+    values (#{accountHandApplyId,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{operatorname,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{prodId,jdbcType=INTEGER}, 
+      #{prodType,jdbcType=VARCHAR}, #{prodName,jdbcType=VARCHAR}, #{comboFee,jdbcType=DECIMAL}, 
+      #{promiseTime,jdbcType=INTEGER}, #{prePayFee,jdbcType=DECIMAL}, #{custid,jdbcType=INTEGER}, 
+      #{realnametype,jdbcType=INTEGER}, #{custtype,jdbcType=INTEGER}, #{refcustid,jdbcType=INTEGER}, 
+      #{certtype,jdbcType=INTEGER}, #{certnum,jdbcType=VARCHAR}, #{certadress,jdbcType=VARCHAR}, 
+      #{customername,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{tmpphone,jdbcType=VARCHAR}, 
+      #{custtype1,jdbcType=VARCHAR}, #{psptnumber,jdbcType=VARCHAR}, #{serialId,jdbcType=INTEGER}, 
+      #{serialNumber,jdbcType=VARCHAR}, #{serialProvince,jdbcType=VARCHAR}, #{serialCity,jdbcType=VARCHAR}, 
+      #{businessType,jdbcType=VARCHAR}, #{advanceLimit,jdbcType=DECIMAL}, #{monthfeeLimit,jdbcType=DECIMAL}, 
+      #{monthLimit,jdbcType=INTEGER}, #{niceRuleTag,jdbcType=INTEGER}, #{featureType,jdbcType=VARCHAR}, 
+      #{featureName,jdbcType=VARCHAR}, #{goodType,jdbcType=VARCHAR}, #{payinfo,jdbcType=VARCHAR}, 
+      #{paytype,jdbcType=VARCHAR}, #{payorg,jdbcType=VARCHAR}, #{paynum,jdbcType=VARCHAR}, 
+      #{saleprice,jdbcType=DECIMAL}, #{cost,jdbcType=DECIMAL}, #{cardprice,jdbcType=DECIMAL}, 
+      #{reservaprice,jdbcType=DECIMAL}, #{resourcesbrandcode,jdbcType=VARCHAR}, #{orgdevicebrandcode,jdbcType=VARCHAR}, 
+      #{resourcesbrandname,jdbcType=VARCHAR}, #{resourcesmodelcode,jdbcType=VARCHAR}, 
+      #{resourcesmodelname,jdbcType=VARCHAR}, #{resourcessrccode,jdbcType=VARCHAR}, #{resourcessrcname,jdbcType=VARCHAR}, 
+      #{resourcessupplycorp,jdbcType=VARCHAR}, #{resourcesservicecorp,jdbcType=VARCHAR}, 
+      #{resourcescolor,jdbcType=VARCHAR}, #{machinetypecode,jdbcType=VARCHAR}, #{machinetypename,jdbcType=VARCHAR}, 
+      #{terminaltype,jdbcType=VARCHAR}, #{terminaltsubtype,jdbcType=VARCHAR}, #{simid,jdbcType=INTEGER}, 
+      #{imsi,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.wobeyond.model.AccounHandApply" >
+    insert into account_hand_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountHandApplyId != null" >
+        ACCOUNT_HAND_APPLY_ID,
+      </if>
+      <if test="operatorid != null" >
+        OPERATORID,
+      </if>
+      <if test="operatorname != null" >
+        OPERATORNAME,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="district != null" >
+        DISTRICT,
+      </if>
+      <if test="department != null" >
+        DEPARTMENT,
+      </if>
+      <if test="channel != null" >
+        CHANNEL,
+      </if>
+      <if test="prodId != null" >
+        PROD_ID,
+      </if>
+      <if test="prodType != null" >
+        PROD_TYPE,
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME,
+      </if>
+      <if test="comboFee != null" >
+        COMBO_FEE,
+      </if>
+      <if test="promiseTime != null" >
+        PROMISE_TIME,
+      </if>
+      <if test="prePayFee != null" >
+        PRE_PAY_FEE,
+      </if>
+      <if test="custid != null" >
+        CUSTID,
+      </if>
+      <if test="realnametype != null" >
+        REALNAMETYPE,
+      </if>
+      <if test="custtype != null" >
+        CUSTTYPE,
+      </if>
+      <if test="refcustid != null" >
+        REFCUSTID,
+      </if>
+      <if test="certtype != null" >
+        CERTTYPE,
+      </if>
+      <if test="certnum != null" >
+        CERTNUM,
+      </if>
+      <if test="certadress != null" >
+        CERTADRESS,
+      </if>
+      <if test="customername != null" >
+        CUSTOMERNAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="tmpphone != null" >
+        TMPPHONE,
+      </if>
+      <if test="custtype1 != null" >
+        CUSTTYPE1,
+      </if>
+      <if test="psptnumber != null" >
+        PSPTNUMBER,
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID,
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER,
+      </if>
+      <if test="serialProvince != null" >
+        SERIAL_PROVINCE,
+      </if>
+      <if test="serialCity != null" >
+        SERIAL_CITY,
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE,
+      </if>
+      <if test="advanceLimit != null" >
+        ADVANCE_LIMIT,
+      </if>
+      <if test="monthfeeLimit != null" >
+        MONTHFEE_LIMIT,
+      </if>
+      <if test="monthLimit != null" >
+        MONTH_LIMIT,
+      </if>
+      <if test="niceRuleTag != null" >
+        NICE_RULE_TAG,
+      </if>
+      <if test="featureType != null" >
+        FEATURE_TYPE,
+      </if>
+      <if test="featureName != null" >
+        FEATURE_NAME,
+      </if>
+      <if test="goodType != null" >
+        GOOD_TYPE,
+      </if>
+      <if test="payinfo != null" >
+        PAYINFO,
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE,
+      </if>
+      <if test="payorg != null" >
+        PAYORG,
+      </if>
+      <if test="paynum != null" >
+        PAYNUM,
+      </if>
+      <if test="saleprice != null" >
+        SALEPRICE,
+      </if>
+      <if test="cost != null" >
+        COST,
+      </if>
+      <if test="cardprice != null" >
+        CARDPRICE,
+      </if>
+      <if test="reservaprice != null" >
+        RESERVAPRICE,
+      </if>
+      <if test="resourcesbrandcode != null" >
+        RESOURCESBRANDCODE,
+      </if>
+      <if test="orgdevicebrandcode != null" >
+        ORGDEVICEBRANDCODE,
+      </if>
+      <if test="resourcesbrandname != null" >
+        RESOURCESBRANDNAME,
+      </if>
+      <if test="resourcesmodelcode != null" >
+        RESOURCESMODELCODE,
+      </if>
+      <if test="resourcesmodelname != null" >
+        RESOURCESMODELNAME,
+      </if>
+      <if test="resourcessrccode != null" >
+        RESOURCESSRCCODE,
+      </if>
+      <if test="resourcessrcname != null" >
+        RESOURCESSRCNAME,
+      </if>
+      <if test="resourcessupplycorp != null" >
+        RESOURCESSUPPLYCORP,
+      </if>
+      <if test="resourcesservicecorp != null" >
+        RESOURCESSERVICECORP,
+      </if>
+      <if test="resourcescolor != null" >
+        RESOURCESCOLOR,
+      </if>
+      <if test="machinetypecode != null" >
+        MACHINETYPECODE,
+      </if>
+      <if test="machinetypename != null" >
+        MACHINETYPENAME,
+      </if>
+      <if test="terminaltype != null" >
+        TERMINALTYPE,
+      </if>
+      <if test="terminaltsubtype != null" >
+        TERMINALTSUBTYPE,
+      </if>
+      <if test="simid != null" >
+        SIMID,
+      </if>
+      <if test="imsi != null" >
+        IMSI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountHandApplyId != null" >
+        #{accountHandApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null" >
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorname != null" >
+        #{operatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null" >
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="prodType != null" >
+        #{prodType,jdbcType=VARCHAR},
+      </if>
+      <if test="prodName != null" >
+        #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="comboFee != null" >
+        #{comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promiseTime != null" >
+        #{promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="prePayFee != null" >
+        #{prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="custid != null" >
+        #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="realnametype != null" >
+        #{realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="custtype != null" >
+        #{custtype,jdbcType=INTEGER},
+      </if>
+      <if test="refcustid != null" >
+        #{refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="certtype != null" >
+        #{certtype,jdbcType=INTEGER},
+      </if>
+      <if test="certnum != null" >
+        #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certadress != null" >
+        #{certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpphone != null" >
+        #{tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="custtype1 != null" >
+        #{custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="psptnumber != null" >
+        #{psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serialId != null" >
+        #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serialProvince != null" >
+        #{serialProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="serialCity != null" >
+        #{serialCity,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceLimit != null" >
+        #{advanceLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="monthfeeLimit != null" >
+        #{monthfeeLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="monthLimit != null" >
+        #{monthLimit,jdbcType=INTEGER},
+      </if>
+      <if test="niceRuleTag != null" >
+        #{niceRuleTag,jdbcType=INTEGER},
+      </if>
+      <if test="featureType != null" >
+        #{featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="featureName != null" >
+        #{featureName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodType != null" >
+        #{goodType,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfo != null" >
+        #{payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payorg != null" >
+        #{payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="cardprice != null" >
+        #{cardprice,jdbcType=DECIMAL},
+      </if>
+      <if test="reservaprice != null" >
+        #{reservaprice,jdbcType=DECIMAL},
+      </if>
+      <if test="resourcesbrandcode != null" >
+        #{resourcesbrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgdevicebrandcode != null" >
+        #{orgdevicebrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesbrandname != null" >
+        #{resourcesbrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesmodelcode != null" >
+        #{resourcesmodelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesmodelname != null" >
+        #{resourcesmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessrccode != null" >
+        #{resourcessrccode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessrcname != null" >
+        #{resourcessrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessupplycorp != null" >
+        #{resourcessupplycorp,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesservicecorp != null" >
+        #{resourcesservicecorp,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcescolor != null" >
+        #{resourcescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="machinetypecode != null" >
+        #{machinetypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="machinetypename != null" >
+        #{machinetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltype != null" >
+        #{terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltsubtype != null" >
+        #{terminaltsubtype,jdbcType=VARCHAR},
+      </if>
+      <if test="simid != null" >
+        #{simid,jdbcType=INTEGER},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.wobeyond.model.AccounHandApplyExample" resultType="java.lang.Integer" >
+    select count(*) from account_hand_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update account_hand_apply
+    <set >
+      <if test="record.accountHandApplyId != null" >
+        ACCOUNT_HAND_APPLY_ID = #{record.accountHandApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.operatorid != null" >
+        OPERATORID = #{record.operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.operatorname != null" >
+        OPERATORNAME = #{record.operatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        PROVINCE = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.district != null" >
+        DISTRICT = #{record.district,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        DEPARTMENT = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channel != null" >
+        CHANNEL = #{record.channel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodId != null" >
+        PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodType != null" >
+        PROD_TYPE = #{record.prodType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodName != null" >
+        PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comboFee != null" >
+        COMBO_FEE = #{record.comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.promiseTime != null" >
+        PROMISE_TIME = #{record.promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.prePayFee != null" >
+        PRE_PAY_FEE = #{record.prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.custid != null" >
+        CUSTID = #{record.custid,jdbcType=INTEGER},
+      </if>
+      <if test="record.realnametype != null" >
+        REALNAMETYPE = #{record.realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="record.custtype != null" >
+        CUSTTYPE = #{record.custtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.refcustid != null" >
+        REFCUSTID = #{record.refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="record.certtype != null" >
+        CERTTYPE = #{record.certtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.certnum != null" >
+        CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certadress != null" >
+        CERTADRESS = #{record.certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customername != null" >
+        CUSTOMERNAME = #{record.customername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tmpphone != null" >
+        TMPPHONE = #{record.tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custtype1 != null" >
+        CUSTTYPE1 = #{record.custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psptnumber != null" >
+        PSPTNUMBER = #{record.psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serialId != null" >
+        SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      </if>
+      <if test="record.serialNumber != null" >
+        SERIAL_NUMBER = #{record.serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serialProvince != null" >
+        SERIAL_PROVINCE = #{record.serialProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serialCity != null" >
+        SERIAL_CITY = #{record.serialCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessType != null" >
+        BUSINESS_TYPE = #{record.businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.advanceLimit != null" >
+        ADVANCE_LIMIT = #{record.advanceLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monthfeeLimit != null" >
+        MONTHFEE_LIMIT = #{record.monthfeeLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monthLimit != null" >
+        MONTH_LIMIT = #{record.monthLimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.niceRuleTag != null" >
+        NICE_RULE_TAG = #{record.niceRuleTag,jdbcType=INTEGER},
+      </if>
+      <if test="record.featureType != null" >
+        FEATURE_TYPE = #{record.featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.featureName != null" >
+        FEATURE_NAME = #{record.featureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodType != null" >
+        GOOD_TYPE = #{record.goodType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payinfo != null" >
+        PAYINFO = #{record.payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paytype != null" >
+        PAYTYPE = #{record.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payorg != null" >
+        PAYORG = #{record.payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paynum != null" >
+        PAYNUM = #{record.paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saleprice != null" >
+        SALEPRICE = #{record.saleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cost != null" >
+        COST = #{record.cost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cardprice != null" >
+        CARDPRICE = #{record.cardprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reservaprice != null" >
+        RESERVAPRICE = #{record.reservaprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.resourcesbrandcode != null" >
+        RESOURCESBRANDCODE = #{record.resourcesbrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgdevicebrandcode != null" >
+        ORGDEVICEBRANDCODE = #{record.orgdevicebrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcesbrandname != null" >
+        RESOURCESBRANDNAME = #{record.resourcesbrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcesmodelcode != null" >
+        RESOURCESMODELCODE = #{record.resourcesmodelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcesmodelname != null" >
+        RESOURCESMODELNAME = #{record.resourcesmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcessrccode != null" >
+        RESOURCESSRCCODE = #{record.resourcessrccode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcessrcname != null" >
+        RESOURCESSRCNAME = #{record.resourcessrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcessupplycorp != null" >
+        RESOURCESSUPPLYCORP = #{record.resourcessupplycorp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcesservicecorp != null" >
+        RESOURCESSERVICECORP = #{record.resourcesservicecorp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcescolor != null" >
+        RESOURCESCOLOR = #{record.resourcescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machinetypecode != null" >
+        MACHINETYPECODE = #{record.machinetypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machinetypename != null" >
+        MACHINETYPENAME = #{record.machinetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminaltype != null" >
+        TERMINALTYPE = #{record.terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminaltsubtype != null" >
+        TERMINALTSUBTYPE = #{record.terminaltsubtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simid != null" >
+        SIMID = #{record.simid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imsi != null" >
+        IMSI = #{record.imsi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update account_hand_apply
+    set ACCOUNT_HAND_APPLY_ID = #{record.accountHandApplyId,jdbcType=INTEGER},
+      OPERATORID = #{record.operatorid,jdbcType=INTEGER},
+      OPERATORNAME = #{record.operatorname,jdbcType=VARCHAR},
+      PROVINCE = #{record.province,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      DISTRICT = #{record.district,jdbcType=VARCHAR},
+      DEPARTMENT = #{record.department,jdbcType=VARCHAR},
+      CHANNEL = #{record.channel,jdbcType=VARCHAR},
+      PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      PROD_TYPE = #{record.prodType,jdbcType=VARCHAR},
+      PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
+      COMBO_FEE = #{record.comboFee,jdbcType=DECIMAL},
+      PROMISE_TIME = #{record.promiseTime,jdbcType=INTEGER},
+      PRE_PAY_FEE = #{record.prePayFee,jdbcType=DECIMAL},
+      CUSTID = #{record.custid,jdbcType=INTEGER},
+      REALNAMETYPE = #{record.realnametype,jdbcType=INTEGER},
+      CUSTTYPE = #{record.custtype,jdbcType=INTEGER},
+      REFCUSTID = #{record.refcustid,jdbcType=INTEGER},
+      CERTTYPE = #{record.certtype,jdbcType=INTEGER},
+      CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      CERTADRESS = #{record.certadress,jdbcType=VARCHAR},
+      CUSTOMERNAME = #{record.customername,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      TMPPHONE = #{record.tmpphone,jdbcType=VARCHAR},
+      CUSTTYPE1 = #{record.custtype1,jdbcType=VARCHAR},
+      PSPTNUMBER = #{record.psptnumber,jdbcType=VARCHAR},
+      SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      SERIAL_NUMBER = #{record.serialNumber,jdbcType=VARCHAR},
+      SERIAL_PROVINCE = #{record.serialProvince,jdbcType=VARCHAR},
+      SERIAL_CITY = #{record.serialCity,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{record.businessType,jdbcType=VARCHAR},
+      ADVANCE_LIMIT = #{record.advanceLimit,jdbcType=DECIMAL},
+      MONTHFEE_LIMIT = #{record.monthfeeLimit,jdbcType=DECIMAL},
+      MONTH_LIMIT = #{record.monthLimit,jdbcType=INTEGER},
+      NICE_RULE_TAG = #{record.niceRuleTag,jdbcType=INTEGER},
+      FEATURE_TYPE = #{record.featureType,jdbcType=VARCHAR},
+      FEATURE_NAME = #{record.featureName,jdbcType=VARCHAR},
+      GOOD_TYPE = #{record.goodType,jdbcType=VARCHAR},
+      PAYINFO = #{record.payinfo,jdbcType=VARCHAR},
+      PAYTYPE = #{record.paytype,jdbcType=VARCHAR},
+      PAYORG = #{record.payorg,jdbcType=VARCHAR},
+      PAYNUM = #{record.paynum,jdbcType=VARCHAR},
+      SALEPRICE = #{record.saleprice,jdbcType=DECIMAL},
+      COST = #{record.cost,jdbcType=DECIMAL},
+      CARDPRICE = #{record.cardprice,jdbcType=DECIMAL},
+      RESERVAPRICE = #{record.reservaprice,jdbcType=DECIMAL},
+      RESOURCESBRANDCODE = #{record.resourcesbrandcode,jdbcType=VARCHAR},
+      ORGDEVICEBRANDCODE = #{record.orgdevicebrandcode,jdbcType=VARCHAR},
+      RESOURCESBRANDNAME = #{record.resourcesbrandname,jdbcType=VARCHAR},
+      RESOURCESMODELCODE = #{record.resourcesmodelcode,jdbcType=VARCHAR},
+      RESOURCESMODELNAME = #{record.resourcesmodelname,jdbcType=VARCHAR},
+      RESOURCESSRCCODE = #{record.resourcessrccode,jdbcType=VARCHAR},
+      RESOURCESSRCNAME = #{record.resourcessrcname,jdbcType=VARCHAR},
+      RESOURCESSUPPLYCORP = #{record.resourcessupplycorp,jdbcType=VARCHAR},
+      RESOURCESSERVICECORP = #{record.resourcesservicecorp,jdbcType=VARCHAR},
+      RESOURCESCOLOR = #{record.resourcescolor,jdbcType=VARCHAR},
+      MACHINETYPECODE = #{record.machinetypecode,jdbcType=VARCHAR},
+      MACHINETYPENAME = #{record.machinetypename,jdbcType=VARCHAR},
+      TERMINALTYPE = #{record.terminaltype,jdbcType=VARCHAR},
+      TERMINALTSUBTYPE = #{record.terminaltsubtype,jdbcType=VARCHAR},
+      SIMID = #{record.simid,jdbcType=INTEGER},
+      IMSI = #{record.imsi,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.wobeyond.model.AccounHandApply" >
+    update account_hand_apply
+    <set >
+      <if test="operatorid != null" >
+        OPERATORID = #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorname != null" >
+        OPERATORNAME = #{operatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        DISTRICT = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        DEPARTMENT = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        CHANNEL = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null" >
+        PROD_ID = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="prodType != null" >
+        PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+      </if>
+      <if test="prodName != null" >
+        PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      </if>
+      <if test="comboFee != null" >
+        COMBO_FEE = #{comboFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promiseTime != null" >
+        PROMISE_TIME = #{promiseTime,jdbcType=INTEGER},
+      </if>
+      <if test="prePayFee != null" >
+        PRE_PAY_FEE = #{prePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="custid != null" >
+        CUSTID = #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="realnametype != null" >
+        REALNAMETYPE = #{realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="custtype != null" >
+        CUSTTYPE = #{custtype,jdbcType=INTEGER},
+      </if>
+      <if test="refcustid != null" >
+        REFCUSTID = #{refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="certtype != null" >
+        CERTTYPE = #{certtype,jdbcType=INTEGER},
+      </if>
+      <if test="certnum != null" >
+        CERTNUM = #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certadress != null" >
+        CERTADRESS = #{certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        CUSTOMERNAME = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpphone != null" >
+        TMPPHONE = #{tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="custtype1 != null" >
+        CUSTTYPE1 = #{custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="psptnumber != null" >
+        PSPTNUMBER = #{psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serialProvince != null" >
+        SERIAL_PROVINCE = #{serialProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="serialCity != null" >
+        SERIAL_CITY = #{serialCity,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceLimit != null" >
+        ADVANCE_LIMIT = #{advanceLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="monthfeeLimit != null" >
+        MONTHFEE_LIMIT = #{monthfeeLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="monthLimit != null" >
+        MONTH_LIMIT = #{monthLimit,jdbcType=INTEGER},
+      </if>
+      <if test="niceRuleTag != null" >
+        NICE_RULE_TAG = #{niceRuleTag,jdbcType=INTEGER},
+      </if>
+      <if test="featureType != null" >
+        FEATURE_TYPE = #{featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="featureName != null" >
+        FEATURE_NAME = #{featureName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodType != null" >
+        GOOD_TYPE = #{goodType,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfo != null" >
+        PAYINFO = #{payinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payorg != null" >
+        PAYORG = #{payorg,jdbcType=VARCHAR},
+      </if>
+      <if test="paynum != null" >
+        PAYNUM = #{paynum,jdbcType=VARCHAR},
+      </if>
+      <if test="saleprice != null" >
+        SALEPRICE = #{saleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null" >
+        COST = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="cardprice != null" >
+        CARDPRICE = #{cardprice,jdbcType=DECIMAL},
+      </if>
+      <if test="reservaprice != null" >
+        RESERVAPRICE = #{reservaprice,jdbcType=DECIMAL},
+      </if>
+      <if test="resourcesbrandcode != null" >
+        RESOURCESBRANDCODE = #{resourcesbrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgdevicebrandcode != null" >
+        ORGDEVICEBRANDCODE = #{orgdevicebrandcode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesbrandname != null" >
+        RESOURCESBRANDNAME = #{resourcesbrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesmodelcode != null" >
+        RESOURCESMODELCODE = #{resourcesmodelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesmodelname != null" >
+        RESOURCESMODELNAME = #{resourcesmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessrccode != null" >
+        RESOURCESSRCCODE = #{resourcessrccode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessrcname != null" >
+        RESOURCESSRCNAME = #{resourcessrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcessupplycorp != null" >
+        RESOURCESSUPPLYCORP = #{resourcessupplycorp,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesservicecorp != null" >
+        RESOURCESSERVICECORP = #{resourcesservicecorp,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcescolor != null" >
+        RESOURCESCOLOR = #{resourcescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="machinetypecode != null" >
+        MACHINETYPECODE = #{machinetypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="machinetypename != null" >
+        MACHINETYPENAME = #{machinetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltype != null" >
+        TERMINALTYPE = #{terminaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="terminaltsubtype != null" >
+        TERMINALTSUBTYPE = #{terminaltsubtype,jdbcType=VARCHAR},
+      </if>
+      <if test="simid != null" >
+        SIMID = #{simid,jdbcType=INTEGER},
+      </if>
+      <if test="imsi != null" >
+        IMSI = #{imsi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.AccounHandApply" >
+    update account_hand_apply
+    set OPERATORID = #{operatorid,jdbcType=INTEGER},
+      OPERATORNAME = #{operatorname,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      DISTRICT = #{district,jdbcType=VARCHAR},
+      DEPARTMENT = #{department,jdbcType=VARCHAR},
+      CHANNEL = #{channel,jdbcType=VARCHAR},
+      PROD_ID = #{prodId,jdbcType=INTEGER},
+      PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+      PROD_NAME = #{prodName,jdbcType=VARCHAR},
+      COMBO_FEE = #{comboFee,jdbcType=DECIMAL},
+      PROMISE_TIME = #{promiseTime,jdbcType=INTEGER},
+      PRE_PAY_FEE = #{prePayFee,jdbcType=DECIMAL},
+      CUSTID = #{custid,jdbcType=INTEGER},
+      REALNAMETYPE = #{realnametype,jdbcType=INTEGER},
+      CUSTTYPE = #{custtype,jdbcType=INTEGER},
+      REFCUSTID = #{refcustid,jdbcType=INTEGER},
+      CERTTYPE = #{certtype,jdbcType=INTEGER},
+      CERTNUM = #{certnum,jdbcType=VARCHAR},
+      CERTADRESS = #{certadress,jdbcType=VARCHAR},
+      CUSTOMERNAME = #{customername,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TMPPHONE = #{tmpphone,jdbcType=VARCHAR},
+      CUSTTYPE1 = #{custtype1,jdbcType=VARCHAR},
+      PSPTNUMBER = #{psptnumber,jdbcType=VARCHAR},
+      SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      SERIAL_PROVINCE = #{serialProvince,jdbcType=VARCHAR},
+      SERIAL_CITY = #{serialCity,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      ADVANCE_LIMIT = #{advanceLimit,jdbcType=DECIMAL},
+      MONTHFEE_LIMIT = #{monthfeeLimit,jdbcType=DECIMAL},
+      MONTH_LIMIT = #{monthLimit,jdbcType=INTEGER},
+      NICE_RULE_TAG = #{niceRuleTag,jdbcType=INTEGER},
+      FEATURE_TYPE = #{featureType,jdbcType=VARCHAR},
+      FEATURE_NAME = #{featureName,jdbcType=VARCHAR},
+      GOOD_TYPE = #{goodType,jdbcType=VARCHAR},
+      PAYINFO = #{payinfo,jdbcType=VARCHAR},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      PAYORG = #{payorg,jdbcType=VARCHAR},
+      PAYNUM = #{paynum,jdbcType=VARCHAR},
+      SALEPRICE = #{saleprice,jdbcType=DECIMAL},
+      COST = #{cost,jdbcType=DECIMAL},
+      CARDPRICE = #{cardprice,jdbcType=DECIMAL},
+      RESERVAPRICE = #{reservaprice,jdbcType=DECIMAL},
+      RESOURCESBRANDCODE = #{resourcesbrandcode,jdbcType=VARCHAR},
+      ORGDEVICEBRANDCODE = #{orgdevicebrandcode,jdbcType=VARCHAR},
+      RESOURCESBRANDNAME = #{resourcesbrandname,jdbcType=VARCHAR},
+      RESOURCESMODELCODE = #{resourcesmodelcode,jdbcType=VARCHAR},
+      RESOURCESMODELNAME = #{resourcesmodelname,jdbcType=VARCHAR},
+      RESOURCESSRCCODE = #{resourcessrccode,jdbcType=VARCHAR},
+      RESOURCESSRCNAME = #{resourcessrcname,jdbcType=VARCHAR},
+      RESOURCESSUPPLYCORP = #{resourcessupplycorp,jdbcType=VARCHAR},
+      RESOURCESSERVICECORP = #{resourcesservicecorp,jdbcType=VARCHAR},
+      RESOURCESCOLOR = #{resourcescolor,jdbcType=VARCHAR},
+      MACHINETYPECODE = #{machinetypecode,jdbcType=VARCHAR},
+      MACHINETYPENAME = #{machinetypename,jdbcType=VARCHAR},
+      TERMINALTYPE = #{terminaltype,jdbcType=VARCHAR},
+      TERMINALTSUBTYPE = #{terminaltsubtype,jdbcType=VARCHAR},
+      SIMID = #{simid,jdbcType=INTEGER},
+      IMSI = #{imsi,jdbcType=VARCHAR}
+    where ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER}
+  </update>
+</mapper>

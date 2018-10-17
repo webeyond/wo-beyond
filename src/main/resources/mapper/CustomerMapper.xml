@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.Customer" >
+    <id column="CUSTID" property="custid" jdbcType="INTEGER" />
+    <result column="REALNAMETYPE" property="realnametype" jdbcType="INTEGER" />
+    <result column="CUSTTYPE" property="custtype" jdbcType="INTEGER" />
+    <result column="REFCUSTID" property="refcustid" jdbcType="INTEGER" />
+    <result column="CERTTYPE" property="certtype" jdbcType="INTEGER" />
+    <result column="CERTNUM" property="certnum" jdbcType="VARCHAR" />
+    <result column="CERTADRESS" property="certadress" jdbcType="VARCHAR" />
+    <result column="CUSTOMERNAME" property="customername" jdbcType="VARCHAR" />
+    <result column="CERTEXPIREDATE" property="certexpiredate" jdbcType="TIMESTAMP" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="TMPPHONE" property="tmpphone" jdbcType="VARCHAR" />
+    <result column="CONTACTPERSON" property="contactperson" jdbcType="VARCHAR" />
+    <result column="CONTACTPHONE" property="contactphone" jdbcType="VARCHAR" />
+    <result column="CONTACTADDRESS" property="contactaddress" jdbcType="VARCHAR" />
+    <result column="CUSTTYPE1" property="custtype1" jdbcType="VARCHAR" />
+    <result column="ISSUESNUMBER" property="issuesnumber" jdbcType="INTEGER" />
+    <result column="PSPTAUTHORITY" property="psptauthority" jdbcType="VARCHAR" />
+    <result column="PSPTSTARTDATE" property="psptstartdate" jdbcType="TIMESTAMP" />
+    <result column="PSPTNUMBER" property="psptnumber" jdbcType="VARCHAR" />
+    <result column="CUSTOMERREMARK" property="customerremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CUSTID, REALNAMETYPE, CUSTTYPE, REFCUSTID, CERTTYPE, CERTNUM, CERTADRESS, CUSTOMERNAME, 
+    CERTEXPIREDATE, SEX, TMPPHONE, CONTACTPERSON, CONTACTPHONE, CONTACTADDRESS, CUSTTYPE1, 
+    ISSUESNUMBER, PSPTAUTHORITY, PSPTSTARTDATE, PSPTNUMBER, CUSTOMERREMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.wobeyond.model.CustomerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where CUSTID = #{custid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customer
+    where CUSTID = #{custid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.wobeyond.model.CustomerExample" >
+    delete from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.wobeyond.model.Customer" >
+    insert into customer (CUSTID, REALNAMETYPE, CUSTTYPE, 
+      REFCUSTID, CERTTYPE, CERTNUM, 
+      CERTADRESS, CUSTOMERNAME, CERTEXPIREDATE, 
+      SEX, TMPPHONE, CONTACTPERSON, 
+      CONTACTPHONE, CONTACTADDRESS, CUSTTYPE1, 
+      ISSUESNUMBER, PSPTAUTHORITY, PSPTSTARTDATE, 
+      PSPTNUMBER, CUSTOMERREMARK)
+    values (#{custid,jdbcType=INTEGER}, #{realnametype,jdbcType=INTEGER}, #{custtype,jdbcType=INTEGER}, 
+      #{refcustid,jdbcType=INTEGER}, #{certtype,jdbcType=INTEGER}, #{certnum,jdbcType=VARCHAR}, 
+      #{certadress,jdbcType=VARCHAR}, #{customername,jdbcType=VARCHAR}, #{certexpiredate,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=VARCHAR}, #{tmpphone,jdbcType=VARCHAR}, #{contactperson,jdbcType=VARCHAR}, 
+      #{contactphone,jdbcType=VARCHAR}, #{contactaddress,jdbcType=VARCHAR}, #{custtype1,jdbcType=VARCHAR}, 
+      #{issuesnumber,jdbcType=INTEGER}, #{psptauthority,jdbcType=VARCHAR}, #{psptstartdate,jdbcType=TIMESTAMP}, 
+      #{psptnumber,jdbcType=VARCHAR}, #{customerremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.wobeyond.model.Customer" >
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custid != null" >
+        CUSTID,
+      </if>
+      <if test="realnametype != null" >
+        REALNAMETYPE,
+      </if>
+      <if test="custtype != null" >
+        CUSTTYPE,
+      </if>
+      <if test="refcustid != null" >
+        REFCUSTID,
+      </if>
+      <if test="certtype != null" >
+        CERTTYPE,
+      </if>
+      <if test="certnum != null" >
+        CERTNUM,
+      </if>
+      <if test="certadress != null" >
+        CERTADRESS,
+      </if>
+      <if test="customername != null" >
+        CUSTOMERNAME,
+      </if>
+      <if test="certexpiredate != null" >
+        CERTEXPIREDATE,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="tmpphone != null" >
+        TMPPHONE,
+      </if>
+      <if test="contactperson != null" >
+        CONTACTPERSON,
+      </if>
+      <if test="contactphone != null" >
+        CONTACTPHONE,
+      </if>
+      <if test="contactaddress != null" >
+        CONTACTADDRESS,
+      </if>
+      <if test="custtype1 != null" >
+        CUSTTYPE1,
+      </if>
+      <if test="issuesnumber != null" >
+        ISSUESNUMBER,
+      </if>
+      <if test="psptauthority != null" >
+        PSPTAUTHORITY,
+      </if>
+      <if test="psptstartdate != null" >
+        PSPTSTARTDATE,
+      </if>
+      <if test="psptnumber != null" >
+        PSPTNUMBER,
+      </if>
+      <if test="customerremark != null" >
+        CUSTOMERREMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custid != null" >
+        #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="realnametype != null" >
+        #{realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="custtype != null" >
+        #{custtype,jdbcType=INTEGER},
+      </if>
+      <if test="refcustid != null" >
+        #{refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="certtype != null" >
+        #{certtype,jdbcType=INTEGER},
+      </if>
+      <if test="certnum != null" >
+        #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certadress != null" >
+        #{certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="certexpiredate != null" >
+        #{certexpiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpphone != null" >
+        #{tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactperson != null" >
+        #{contactperson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddress != null" >
+        #{contactaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="custtype1 != null" >
+        #{custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="issuesnumber != null" >
+        #{issuesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="psptauthority != null" >
+        #{psptauthority,jdbcType=VARCHAR},
+      </if>
+      <if test="psptstartdate != null" >
+        #{psptstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="psptnumber != null" >
+        #{psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerremark != null" >
+        #{customerremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.wobeyond.model.CustomerExample" resultType="java.lang.Integer" >
+    select count(*) from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer
+    <set >
+      <if test="record.custid != null" >
+        CUSTID = #{record.custid,jdbcType=INTEGER},
+      </if>
+      <if test="record.realnametype != null" >
+        REALNAMETYPE = #{record.realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="record.custtype != null" >
+        CUSTTYPE = #{record.custtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.refcustid != null" >
+        REFCUSTID = #{record.refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="record.certtype != null" >
+        CERTTYPE = #{record.certtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.certnum != null" >
+        CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certadress != null" >
+        CERTADRESS = #{record.certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customername != null" >
+        CUSTOMERNAME = #{record.customername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certexpiredate != null" >
+        CERTEXPIREDATE = #{record.certexpiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tmpphone != null" >
+        TMPPHONE = #{record.tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactperson != null" >
+        CONTACTPERSON = #{record.contactperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactphone != null" >
+        CONTACTPHONE = #{record.contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactaddress != null" >
+        CONTACTADDRESS = #{record.contactaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custtype1 != null" >
+        CUSTTYPE1 = #{record.custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issuesnumber != null" >
+        ISSUESNUMBER = #{record.issuesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.psptauthority != null" >
+        PSPTAUTHORITY = #{record.psptauthority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psptstartdate != null" >
+        PSPTSTARTDATE = #{record.psptstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.psptnumber != null" >
+        PSPTNUMBER = #{record.psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerremark != null" >
+        CUSTOMERREMARK = #{record.customerremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer
+    set CUSTID = #{record.custid,jdbcType=INTEGER},
+      REALNAMETYPE = #{record.realnametype,jdbcType=INTEGER},
+      CUSTTYPE = #{record.custtype,jdbcType=INTEGER},
+      REFCUSTID = #{record.refcustid,jdbcType=INTEGER},
+      CERTTYPE = #{record.certtype,jdbcType=INTEGER},
+      CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      CERTADRESS = #{record.certadress,jdbcType=VARCHAR},
+      CUSTOMERNAME = #{record.customername,jdbcType=VARCHAR},
+      CERTEXPIREDATE = #{record.certexpiredate,jdbcType=TIMESTAMP},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      TMPPHONE = #{record.tmpphone,jdbcType=VARCHAR},
+      CONTACTPERSON = #{record.contactperson,jdbcType=VARCHAR},
+      CONTACTPHONE = #{record.contactphone,jdbcType=VARCHAR},
+      CONTACTADDRESS = #{record.contactaddress,jdbcType=VARCHAR},
+      CUSTTYPE1 = #{record.custtype1,jdbcType=VARCHAR},
+      ISSUESNUMBER = #{record.issuesnumber,jdbcType=INTEGER},
+      PSPTAUTHORITY = #{record.psptauthority,jdbcType=VARCHAR},
+      PSPTSTARTDATE = #{record.psptstartdate,jdbcType=TIMESTAMP},
+      PSPTNUMBER = #{record.psptnumber,jdbcType=VARCHAR},
+      CUSTOMERREMARK = #{record.customerremark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.wobeyond.model.Customer" >
+    update customer
+    <set >
+      <if test="realnametype != null" >
+        REALNAMETYPE = #{realnametype,jdbcType=INTEGER},
+      </if>
+      <if test="custtype != null" >
+        CUSTTYPE = #{custtype,jdbcType=INTEGER},
+      </if>
+      <if test="refcustid != null" >
+        REFCUSTID = #{refcustid,jdbcType=INTEGER},
+      </if>
+      <if test="certtype != null" >
+        CERTTYPE = #{certtype,jdbcType=INTEGER},
+      </if>
+      <if test="certnum != null" >
+        CERTNUM = #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certadress != null" >
+        CERTADRESS = #{certadress,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        CUSTOMERNAME = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="certexpiredate != null" >
+        CERTEXPIREDATE = #{certexpiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpphone != null" >
+        TMPPHONE = #{tmpphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactperson != null" >
+        CONTACTPERSON = #{contactperson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        CONTACTPHONE = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddress != null" >
+        CONTACTADDRESS = #{contactaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="custtype1 != null" >
+        CUSTTYPE1 = #{custtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="issuesnumber != null" >
+        ISSUESNUMBER = #{issuesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="psptauthority != null" >
+        PSPTAUTHORITY = #{psptauthority,jdbcType=VARCHAR},
+      </if>
+      <if test="psptstartdate != null" >
+        PSPTSTARTDATE = #{psptstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="psptnumber != null" >
+        PSPTNUMBER = #{psptnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerremark != null" >
+        CUSTOMERREMARK = #{customerremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CUSTID = #{custid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.Customer" >
+    update customer
+    set REALNAMETYPE = #{realnametype,jdbcType=INTEGER},
+      CUSTTYPE = #{custtype,jdbcType=INTEGER},
+      REFCUSTID = #{refcustid,jdbcType=INTEGER},
+      CERTTYPE = #{certtype,jdbcType=INTEGER},
+      CERTNUM = #{certnum,jdbcType=VARCHAR},
+      CERTADRESS = #{certadress,jdbcType=VARCHAR},
+      CUSTOMERNAME = #{customername,jdbcType=VARCHAR},
+      CERTEXPIREDATE = #{certexpiredate,jdbcType=TIMESTAMP},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TMPPHONE = #{tmpphone,jdbcType=VARCHAR},
+      CONTACTPERSON = #{contactperson,jdbcType=VARCHAR},
+      CONTACTPHONE = #{contactphone,jdbcType=VARCHAR},
+      CONTACTADDRESS = #{contactaddress,jdbcType=VARCHAR},
+      CUSTTYPE1 = #{custtype1,jdbcType=VARCHAR},
+      ISSUESNUMBER = #{issuesnumber,jdbcType=INTEGER},
+      PSPTAUTHORITY = #{psptauthority,jdbcType=VARCHAR},
+      PSPTSTARTDATE = #{psptstartdate,jdbcType=TIMESTAMP},
+      PSPTNUMBER = #{psptnumber,jdbcType=VARCHAR},
+      CUSTOMERREMARK = #{customerremark,jdbcType=VARCHAR}
+    where CUSTID = #{custid,jdbcType=INTEGER}
+  </update>
+</mapper>

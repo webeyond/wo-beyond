@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.OrderSendMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.OrderSend" >
+    <id column="DELI_NO" property="deliNo" jdbcType="INTEGER" />
+    <result column="OPER_ID" property="operId" jdbcType="INTEGER" />
+    <result column="CUSTID" property="custid" jdbcType="INTEGER" />
+    <result column="SERIAL_ID" property="serialId" jdbcType="INTEGER" />
+    <result column="PROD_ID" property="prodId" jdbcType="INTEGER" />
+    <result column="ACCOUNT_HAND_APPLY_ID" property="accountHandApplyId" jdbcType="INTEGER" />
+    <result column="CONTACTADDRESS" property="contactaddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DELI_NO, OPER_ID, CUSTID, SERIAL_ID, PROD_ID, ACCOUNT_HAND_APPLY_ID, CONTACTADDRESS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.wobeyond.model.OrderSendExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_send
+    where DELI_NO = #{deliNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_send
+    where DELI_NO = #{deliNo,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.wobeyond.model.OrderSendExample" >
+    delete from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.wobeyond.model.OrderSend" >
+    insert into order_send (DELI_NO, OPER_ID, CUSTID, 
+      SERIAL_ID, PROD_ID, ACCOUNT_HAND_APPLY_ID, 
+      CONTACTADDRESS)
+    values (#{deliNo,jdbcType=INTEGER}, #{operId,jdbcType=INTEGER}, #{custid,jdbcType=INTEGER}, 
+      #{serialId,jdbcType=INTEGER}, #{prodId,jdbcType=INTEGER}, #{accountHandApplyId,jdbcType=INTEGER}, 
+      #{contactaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.wobeyond.model.OrderSend" >
+    insert into order_send
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deliNo != null" >
+        DELI_NO,
+      </if>
+      <if test="operId != null" >
+        OPER_ID,
+      </if>
+      <if test="custid != null" >
+        CUSTID,
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID,
+      </if>
+      <if test="prodId != null" >
+        PROD_ID,
+      </if>
+      <if test="accountHandApplyId != null" >
+        ACCOUNT_HAND_APPLY_ID,
+      </if>
+      <if test="contactaddress != null" >
+        CONTACTADDRESS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deliNo != null" >
+        #{deliNo,jdbcType=INTEGER},
+      </if>
+      <if test="operId != null" >
+        #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="custid != null" >
+        #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="serialId != null" >
+        #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null" >
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="accountHandApplyId != null" >
+        #{accountHandApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="contactaddress != null" >
+        #{contactaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.wobeyond.model.OrderSendExample" resultType="java.lang.Integer" >
+    select count(*) from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_send
+    <set >
+      <if test="record.deliNo != null" >
+        DELI_NO = #{record.deliNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.operId != null" >
+        OPER_ID = #{record.operId,jdbcType=INTEGER},
+      </if>
+      <if test="record.custid != null" >
+        CUSTID = #{record.custid,jdbcType=INTEGER},
+      </if>
+      <if test="record.serialId != null" >
+        SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodId != null" >
+        PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountHandApplyId != null" >
+        ACCOUNT_HAND_APPLY_ID = #{record.accountHandApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contactaddress != null" >
+        CONTACTADDRESS = #{record.contactaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_send
+    set DELI_NO = #{record.deliNo,jdbcType=INTEGER},
+      OPER_ID = #{record.operId,jdbcType=INTEGER},
+      CUSTID = #{record.custid,jdbcType=INTEGER},
+      SERIAL_ID = #{record.serialId,jdbcType=INTEGER},
+      PROD_ID = #{record.prodId,jdbcType=INTEGER},
+      ACCOUNT_HAND_APPLY_ID = #{record.accountHandApplyId,jdbcType=INTEGER},
+      CONTACTADDRESS = #{record.contactaddress,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.wobeyond.model.OrderSend" >
+    update order_send
+    <set >
+      <if test="operId != null" >
+        OPER_ID = #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="custid != null" >
+        CUSTID = #{custid,jdbcType=INTEGER},
+      </if>
+      <if test="serialId != null" >
+        SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null" >
+        PROD_ID = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="accountHandApplyId != null" >
+        ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="contactaddress != null" >
+        CONTACTADDRESS = #{contactaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DELI_NO = #{deliNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.OrderSend" >
+    update order_send
+    set OPER_ID = #{operId,jdbcType=INTEGER},
+      CUSTID = #{custid,jdbcType=INTEGER},
+      SERIAL_ID = #{serialId,jdbcType=INTEGER},
+      PROD_ID = #{prodId,jdbcType=INTEGER},
+      ACCOUNT_HAND_APPLY_ID = #{accountHandApplyId,jdbcType=INTEGER},
+      CONTACTADDRESS = #{contactaddress,jdbcType=VARCHAR}
+    where DELI_NO = #{deliNo,jdbcType=INTEGER}
+  </update>
+</mapper>
