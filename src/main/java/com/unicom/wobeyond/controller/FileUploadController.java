@@ -2,6 +2,8 @@ package com.unicom.wobeyond.controller;
 
 import com.unicom.wobeyond.service.FileUploadService;
 import com.unicom.wobeyond.util.WoBeyondUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@Api(value = "FileUploadController",description = "上传文件接口")
 public class FileUploadController {
 
     private static final Logger logger = LoggerFactory.getLogger(FileUploadController.class);
@@ -22,6 +25,7 @@ public class FileUploadController {
 
     @RequestMapping(path = {"/uploadImage/"}, method = {RequestMethod.POST})
     @ResponseBody
+    @ApiOperation(value="上传图片接口", response = String.class)
     public String uploadImage(@RequestParam("file") MultipartFile file) {
         try {
             String fileUrl = fileUploadService.saveImage(file);
