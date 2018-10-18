@@ -3,28 +3,18 @@ package com.unicom.wobeyond.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.unicom.wobeyond.constant.ApplicationConstant;
-import com.unicom.wobeyond.mapper.ProdMapper;
 import com.unicom.wobeyond.mapper.StatisticsMapper_extend;
-import com.unicom.wobeyond.model.AccountExample;
-import com.unicom.wobeyond.model.Prod;
-import com.unicom.wobeyond.service.FileUploadService;
 import com.unicom.wobeyond.service.StatisticsService;
-import com.unicom.wobeyond.util.WoBeyondUtil;
 import com.unicom.wobeyond.vo.PaginaionVO;
+import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
+import com.unicom.wobeyond.vo.statistics.CustomerCountVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
@@ -56,6 +46,17 @@ public class StatisticsServiceImpl implements StatisticsService {
         respVO.setRows(list);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取订单列表成功！");
+        return respVO;
+    }
+
+    @Override
+    public CustomerCountRespVO selectSignCustomerCount() throws Exception {
+
+        CustomerCountRespVO respVO = new CustomerCountRespVO();
+        List<CustomerCountVO> list = statisticsMapper_extend.selectSignCustomerCount();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取每个区签约用户数量成功！");
         return respVO;
     }
 }

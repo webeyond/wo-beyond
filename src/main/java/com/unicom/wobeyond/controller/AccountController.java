@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "account")
-@Api(value = "AccountController",description = "用户接口")
+@Api(value = "AccountController",description = "用户管理模块")
 public class AccountController {
 
     private static Logger logger = LoggerFactory.getLogger(AccountController.class);

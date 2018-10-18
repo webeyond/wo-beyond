@@ -26,4 +26,16 @@
 
  </select>
 
+    <select id="selectSignCustomerCount" resultType="CustomerCountVO">
+
+		 	SELECT  b.district,
+		 	        COUNT(*) as counts
+            FROM
+                    busi_order a,account b
+            WHERE a.oper_id=b.operatorid
+            AND a.pay_flag=1
+            GROUP BY b.district;
+
+ </select>
+
 </mapper>

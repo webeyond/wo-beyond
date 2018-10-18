@@ -3,6 +3,7 @@ package com.unicom.wobeyond.controller;
 import com.unicom.wobeyond.constant.ApplicationConstant;
 import com.unicom.wobeyond.service.StatisticsService;
 import com.unicom.wobeyond.vo.PaginaionVO;
+import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "statistics")
-@Api(value = "StatisticsController",description = "统计接口")
+@Api(value = "StatisticsController",description = "统计模块")
 public class StatisticsController {
 
     private static Logger logger = LoggerFactory.getLogger(StatisticsController.class);
@@ -49,6 +52,27 @@ public class StatisticsController {
             paginaionVO.setResult(ApplicationConstant.RESULT_FALTURE);
             logger.error(paginaionVO.getMsg());
             return paginaionVO;
+        }
+    }
+
+    /**
+     * @return CustomerCountRespVO
+     * @Title: selectSignCustomerCount
+     * @Description: 统计每个区签约用户数量
+     */
+    @ResponseBody
+    @RequestMapping(value = "v1/selectSignCustomerCount", method= RequestMethod.POST)
+    @ApiOperation(value="统计每个区签约用户数量接口", response = Map.class)
+    public CustomerCountRespVO selectSignCustomerCount() {
+        try {
+            return statisticsService.selectSignCustomerCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+            CustomerCountRespVO respVO = new CustomerCountRespVO();
+            respVO.setMsg(e.getMessage());
+            respVO.setResult(ApplicationConstant.RESULT_FALTURE);
+            logger.error(respVO.getMsg());
+            return respVO;
         }
     }
 

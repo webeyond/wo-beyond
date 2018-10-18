@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@Api(value = "LoginController",description = "登录接口")
+@Api(value = "LoginController",description = "登录模块")
 public class LoginController {
 
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
