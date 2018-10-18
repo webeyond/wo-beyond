@@ -52,7 +52,7 @@ public class SwaggerConfig {
                 .description("沃超越后端接口标准化api文档")
                 .version("1.0.0")
                 .license("项目GitHub地址")
-                .licenseUrl("https://github.com/beyondchampion/wo-beyond")
+                .licenseUrl("https://github.com/webeyond/wo-beyond")
                 .contact(contact)
                 .build();
     }

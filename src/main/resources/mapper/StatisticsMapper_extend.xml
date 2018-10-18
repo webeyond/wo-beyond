@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.wobeyond.mapper.StatisticsMapper_extend" >
+  
+ <select id="selectOrderList" resultType="com.unicom.wobeyond.vo.statistics.OrderVO">
+
+		 	SELECT
+		 		A.PROVINCE as province,
+		 		A.CITY as city,
+		 		A.DISTRICT as district,
+		 		T.BUSI_ORDER_DATE as busiOrderDate,
+		 		A.OPERATORNAME as operatorname,
+		 		B.CUSTOMERNAME as customername,
+		 		LEFT(CONCAT(C.SERIAL_NUMBER,''),11) as serialNumber,
+		 		D.PROD_NAME as prodName
+			FROM
+					busi_order T,
+					account A,
+					customer B,
+					SERIAL C,
+					prod D
+			WHERE T.OPER_ID=A.OPERATORID
+			AND T.CUSTID=B.CUSTID
+			AND T.SERIAL_ID=C.SERIAL_ID
+			AND T.PROD_ID=D.PROD_ID
+
+ </select>
+
+</mapper>
