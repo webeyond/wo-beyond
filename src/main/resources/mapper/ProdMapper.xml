@@ -3,7 +3,7 @@
 <mapper namespace="com.unicom.wobeyond.mapper.ProdMapper" >
   <resultMap id="BaseResultMap" type="com.unicom.wobeyond.model.Prod" >
     <id column="PROD_ID" property="prodId" jdbcType="INTEGER" />
-    <result column="PROD_TYPE" property="prodType" jdbcType="INTEGER" />
+    <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
     <result column="PROD_NAME" property="prodName" jdbcType="VARCHAR" />
     <result column="COMBO_FEE" property="comboFee" jdbcType="DECIMAL" />
     <result column="PROMISE_TIME" property="promiseTime" jdbcType="INTEGER" />
@@ -105,7 +105,7 @@
     insert into prod (PROD_ID, PROD_TYPE, PROD_NAME, 
       COMBO_FEE, PROMISE_TIME, PRE_PAY_FEE, 
       DES_PIC)
-    values (#{prodId,jdbcType=INTEGER}, #{prodType,jdbcType=INTEGER}, #{prodName,jdbcType=VARCHAR}, 
+    values (#{prodId,jdbcType=INTEGER}, #{prodType,jdbcType=VARCHAR}, #{prodName,jdbcType=VARCHAR}, 
       #{comboFee,jdbcType=DECIMAL}, #{promiseTime,jdbcType=INTEGER}, #{prePayFee,jdbcType=DECIMAL}, 
       #{desPic,jdbcType=VARCHAR})
   </insert>
@@ -139,7 +139,7 @@
         #{prodId,jdbcType=INTEGER},
       </if>
       <if test="prodType != null" >
-        #{prodType,jdbcType=INTEGER},
+        #{prodType,jdbcType=VARCHAR},
       </if>
       <if test="prodName != null" >
         #{prodName,jdbcType=VARCHAR},
@@ -171,7 +171,7 @@
         PROD_ID = #{record.prodId,jdbcType=INTEGER},
       </if>
       <if test="record.prodType != null" >
-        PROD_TYPE = #{record.prodType,jdbcType=INTEGER},
+        PROD_TYPE = #{record.prodType,jdbcType=VARCHAR},
       </if>
       <if test="record.prodName != null" >
         PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
@@ -196,7 +196,7 @@
   <update id="updateByExample" parameterType="map" >
     update prod
     set PROD_ID = #{record.prodId,jdbcType=INTEGER},
-      PROD_TYPE = #{record.prodType,jdbcType=INTEGER},
+      PROD_TYPE = #{record.prodType,jdbcType=VARCHAR},
       PROD_NAME = #{record.prodName,jdbcType=VARCHAR},
       COMBO_FEE = #{record.comboFee,jdbcType=DECIMAL},
       PROMISE_TIME = #{record.promiseTime,jdbcType=INTEGER},
@@ -210,7 +210,7 @@
     update prod
     <set >
       <if test="prodType != null" >
-        PROD_TYPE = #{prodType,jdbcType=INTEGER},
+        PROD_TYPE = #{prodType,jdbcType=VARCHAR},
       </if>
       <if test="prodName != null" >
         PROD_NAME = #{prodName,jdbcType=VARCHAR},
@@ -232,7 +232,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.unicom.wobeyond.model.Prod" >
     update prod
-    set PROD_TYPE = #{prodType,jdbcType=INTEGER},
+    set PROD_TYPE = #{prodType,jdbcType=VARCHAR},
       PROD_NAME = #{prodName,jdbcType=VARCHAR},
       COMBO_FEE = #{comboFee,jdbcType=DECIMAL},
       PROMISE_TIME = #{promiseTime,jdbcType=INTEGER},

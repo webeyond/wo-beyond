@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Prod {
     private Integer prodId;
 
-    private Integer prodType;
+    private String prodType;
 
     private String prodName;
 
@@ -25,12 +25,12 @@ public class Prod {
         this.prodId = prodId;
     }
 
-    public Integer getProdType() {
+    public String getProdType() {
         return prodType;
     }
 
-    public void setProdType(Integer prodType) {
-        this.prodType = prodType;
+    public void setProdType(String prodType) {
+        this.prodType = prodType == null ? null : prodType.trim();
     }
 
     public String getProdName() {
