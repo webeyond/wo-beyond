@@ -1,10 +1,7 @@
 package com.unicom.wobeyond.mapper;
 
 
-import com.unicom.wobeyond.vo.statistics.AccountTopFiveVO;
-import com.unicom.wobeyond.vo.statistics.CustomerCountVO;
-import com.unicom.wobeyond.vo.statistics.OrderVO;
-import com.unicom.wobeyond.vo.statistics.SignFunnelCountVO;
+import com.unicom.wobeyond.vo.statistics.*;
 
 import java.util.List;
 
@@ -34,6 +31,12 @@ public interface StatisticsMapper_extend {
 	 * @return
 	 */
 	List<AccountTopFiveVO> selectAccountTopFive();
+
+	/**
+	 * 统计区县签约数量
+	 * @return
+	 */
+	List<DistrictSignCountVO> selectDistrictSignCount();
 
 
    

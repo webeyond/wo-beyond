@@ -2,7 +2,7 @@ package com.unicom.wobeyond.vo.statistics;
 
 public class AccountTopFiveVO {
 
-    private String counts;
+    private Integer counts;
 
     private Integer operatorid;
 
@@ -22,11 +22,11 @@ public class AccountTopFiveVO {
 
     private String passwd;
 
-    public String getCounts() {
+    public Integer getCounts() {
         return counts;
     }
 
-    public void setCounts(String counts) {
+    public void setCounts(Integer counts) {
         this.counts = counts;
     }
 

@@ -78,5 +78,15 @@ public class StatisticsServiceImpl implements StatisticsService {
         return respVO;
     }
 
+    @Override
+    public DistrictSignCountRespVO selectDistrictSignCount() throws Exception {
+        DistrictSignCountRespVO respVO = new DistrictSignCountRespVO();
+        List<DistrictSignCountVO> list = statisticsMapper_extend.selectDistrictSignCount();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取统计区县签约数量成功！");
+        return respVO;
+    }
+
 
 }

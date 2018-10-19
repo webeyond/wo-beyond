@@ -1,10 +1,7 @@
 package com.unicom.wobeyond.service;
 
 import com.unicom.wobeyond.vo.PaginaionVO;
-import com.unicom.wobeyond.vo.statistics.AccountTopFiveRespVO;
-import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
-import com.unicom.wobeyond.vo.statistics.OrderVO;
-import com.unicom.wobeyond.vo.statistics.SignFunnelCountRespVO;
+import com.unicom.wobeyond.vo.statistics.*;
 
 public interface StatisticsService {
 
@@ -27,4 +24,10 @@ public interface StatisticsService {
      * @return
      */
     AccountTopFiveRespVO selectAccountTopFive() throws Exception;
+
+    /**
+     * 统计区县签约数量
+     * @return
+     */
+    DistrictSignCountRespVO selectDistrictSignCount() throws Exception;
 }

@@ -3,10 +3,7 @@ package com.unicom.wobeyond.controller;
 import com.unicom.wobeyond.constant.ApplicationConstant;
 import com.unicom.wobeyond.service.StatisticsService;
 import com.unicom.wobeyond.vo.PaginaionVO;
-import com.unicom.wobeyond.vo.statistics.AccountTopFiveRespVO;
-import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
-import com.unicom.wobeyond.vo.statistics.OrderVO;
-import com.unicom.wobeyond.vo.statistics.SignFunnelCountRespVO;
+import com.unicom.wobeyond.vo.statistics.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -113,6 +110,27 @@ public class StatisticsController {
         } catch (Exception e) {
             e.printStackTrace();
             AccountTopFiveRespVO respVO = new AccountTopFiveRespVO();
+            respVO.setMsg(e.getMessage());
+            respVO.setResult(ApplicationConstant.RESULT_FALTURE);
+            logger.error(respVO.getMsg());
+            return respVO;
+        }
+    }
+
+    /**
+     * @return DistrictSignCountRespVO
+     * @Title: selectDistrictSignCount
+     * @Description: 统计区县签约数量
+     */
+    @ResponseBody
+    @RequestMapping(value = "v1/selectDistrictSignCount", method= RequestMethod.POST)
+    @ApiOperation(value="统计区县签约数量", response = DistrictSignCountRespVO.class)
+    public DistrictSignCountRespVO selectDistrictSignCount() {
+        try {
+            return statisticsService.selectDistrictSignCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+            DistrictSignCountRespVO respVO = new DistrictSignCountRespVO();
             respVO.setMsg(e.getMessage());
             respVO.setResult(ApplicationConstant.RESULT_FALTURE);
             logger.error(respVO.getMsg());
