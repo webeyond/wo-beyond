@@ -19,6 +19,8 @@ public class Account {
 
     private String passwd;
 
+    private String pic;
+
     public Integer getOperatorid() {
         return operatorid;
     }
@@ -89,5 +91,13 @@ public class Account {
 
     public void setPasswd(String passwd) {
         this.passwd = passwd == null ? null : passwd.trim();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic == null ? null : pic.trim();
     }
 }
