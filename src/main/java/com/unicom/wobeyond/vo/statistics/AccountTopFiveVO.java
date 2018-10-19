@@ -22,6 +22,16 @@ public class AccountTopFiveVO {
 
     private String passwd;
 
+    private String pic;
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
     public Integer getCounts() {
         return counts;
     }

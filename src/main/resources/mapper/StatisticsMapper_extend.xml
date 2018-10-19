@@ -78,8 +78,9 @@
               `DEPARTMENT`,
               `CHANNEL`,
               `ROLE`,
-              `passwd`
-              AS num FROM busi_order
+              `passwd`,
+               pic
+            FROM busi_order
 
             LEFT JOIN account ON oper_id = OPERATORID
 
