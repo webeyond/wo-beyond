@@ -1,6 +1,7 @@
 package com.unicom.wobeyond.service;
 
 import com.unicom.wobeyond.vo.PaginaionVO;
+import com.unicom.wobeyond.vo.statistics.AccountTopFiveRespVO;
 import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
 import com.unicom.wobeyond.vo.statistics.SignFunnelCountRespVO;
@@ -20,4 +21,10 @@ public interface StatisticsService {
      * @return
      */
     SignFunnelCountRespVO selectSignFunnelCount() throws Exception;
+
+    /**
+     * 统计地推员前五名销售数量
+     * @return
+     */
+    AccountTopFiveRespVO selectAccountTopFive() throws Exception;
 }

@@ -1,6 +1,7 @@
 package com.unicom.wobeyond.mapper;
 
 
+import com.unicom.wobeyond.vo.statistics.AccountTopFiveVO;
 import com.unicom.wobeyond.vo.statistics.CustomerCountVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
 import com.unicom.wobeyond.vo.statistics.SignFunnelCountVO;
@@ -27,6 +28,12 @@ public interface StatisticsMapper_extend {
 	 * @return
 	 */
 	List<SignFunnelCountVO> selectSignFunnelCount();
+
+	/**
+	 * 统计地推员前五名销售数量
+	 * @return
+	 */
+	List<AccountTopFiveVO> selectAccountTopFive();
 
 
    

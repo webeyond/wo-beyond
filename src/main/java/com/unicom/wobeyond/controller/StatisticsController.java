@@ -3,6 +3,7 @@ package com.unicom.wobeyond.controller;
 import com.unicom.wobeyond.constant.ApplicationConstant;
 import com.unicom.wobeyond.service.StatisticsService;
 import com.unicom.wobeyond.vo.PaginaionVO;
+import com.unicom.wobeyond.vo.statistics.AccountTopFiveRespVO;
 import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
 import com.unicom.wobeyond.vo.statistics.SignFunnelCountRespVO;
@@ -42,7 +43,7 @@ public class StatisticsController {
     @ResponseBody
     @RequestMapping(value = "v1/selectOrderList", method= RequestMethod.POST)
     @ApiImplicitParam(name = "req", value = "查询订单列表入参", dataType = "OrderVO")
-    @ApiOperation(value="查询订单列表接口", response = PaginaionVO.class)
+    @ApiOperation(value="查询订单列表", response = PaginaionVO.class)
     public PaginaionVO<OrderVO> selectOrderList(@RequestBody OrderVO req, int page, int pageSize) {
         try {
             return statisticsService.selectOrderList(req, page, pageSize);
@@ -63,7 +64,7 @@ public class StatisticsController {
      */
     @ResponseBody
     @RequestMapping(value = "v1/selectSignCustomerCount", method= RequestMethod.POST)
-    @ApiOperation(value="统计每个区签约用户数量接口", response = CustomerCountRespVO.class)
+    @ApiOperation(value="统计每个区签约用户数量", response = CustomerCountRespVO.class)
     public CustomerCountRespVO selectSignCustomerCount() {
         try {
             return statisticsService.selectSignCustomerCount();
@@ -84,13 +85,34 @@ public class StatisticsController {
      */
     @ResponseBody
     @RequestMapping(value = "v1/selectSignFunnelCount", method= RequestMethod.POST)
-    @ApiOperation(value="统计签约漏斗图接口", response = SignFunnelCountRespVO.class)
+    @ApiOperation(value="统计签约漏斗图", response = SignFunnelCountRespVO.class)
     public SignFunnelCountRespVO selectSignFunnelCount() {
         try {
             return statisticsService.selectSignFunnelCount();
         } catch (Exception e) {
             e.printStackTrace();
             SignFunnelCountRespVO respVO = new SignFunnelCountRespVO();
+            respVO.setMsg(e.getMessage());
+            respVO.setResult(ApplicationConstant.RESULT_FALTURE);
+            logger.error(respVO.getMsg());
+            return respVO;
+        }
+    }
+
+    /**
+     * @return AccountTopFiveRespVO
+     * @Title: selectAccountTopFive
+     * @Description: 统计地推员前五名销售数量
+     */
+    @ResponseBody
+    @RequestMapping(value = "v1/selectAccountTopFive", method= RequestMethod.POST)
+    @ApiOperation(value="统计地推员前五名销售数量", response = AccountTopFiveRespVO.class)
+    public AccountTopFiveRespVO selectAccountTopFive() {
+        try {
+            return statisticsService.selectAccountTopFive();
+        } catch (Exception e) {
+            e.printStackTrace();
+            AccountTopFiveRespVO respVO = new AccountTopFiveRespVO();
             respVO.setMsg(e.getMessage());
             respVO.setResult(ApplicationConstant.RESULT_FALTURE);
             logger.error(respVO.getMsg());

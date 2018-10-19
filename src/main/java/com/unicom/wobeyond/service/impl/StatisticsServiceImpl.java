@@ -68,5 +68,15 @@ public class StatisticsServiceImpl implements StatisticsService {
         return respVO;
     }
 
+    @Override
+    public AccountTopFiveRespVO selectAccountTopFive() throws Exception {
+        AccountTopFiveRespVO respVO = new AccountTopFiveRespVO();
+        List<AccountTopFiveVO> list = statisticsMapper_extend.selectAccountTopFive();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取地推员前五名销售数量成功！");
+        return respVO;
+    }
+
 
 }

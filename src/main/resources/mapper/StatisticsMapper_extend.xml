@@ -66,4 +66,25 @@
 
  </select>
 
+ <select id="selectAccountTopFive" resultType="AccountTopFiveVO">
+
+            SELECT
+               COUNT(*) as counts,
+              `OPERATORID`,
+              `OPERATORNAME`,
+              `PROVINCE`,
+              `CITY`,
+              `DISTRICT`,
+              `DEPARTMENT`,
+              `CHANNEL`,
+              `ROLE`,
+              `passwd`
+              AS num FROM busi_order
+
+            LEFT JOIN account ON oper_id = OPERATORID
+
+            GROUP BY oper_id ORDER BY COUNT(*) DESC LIMIT 5
+
+ </select>
+
 </mapper>
