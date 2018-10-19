@@ -138,6 +138,27 @@ public class StatisticsController {
         }
     }
 
+    /**
+     * @return ProdTopFiveRespVO
+     * @Title: selectProdTopFive
+     * @Description: 统计手机卡产品前五名销售数量
+     */
+    @ResponseBody
+    @RequestMapping(value = "v1/selectProdTopFive", method= RequestMethod.POST)
+    @ApiOperation(value="统计手机卡产品前五名销售数量", response = ProdTopFiveRespVO.class)
+    public ProdTopFiveRespVO selectProdTopFive() {
+        try {
+            return statisticsService.selectProdTopFive();
+        } catch (Exception e) {
+            e.printStackTrace();
+            ProdTopFiveRespVO respVO = new ProdTopFiveRespVO();
+            respVO.setMsg(e.getMessage());
+            respVO.setResult(ApplicationConstant.RESULT_FALTURE);
+            logger.error(respVO.getMsg());
+            return respVO;
+        }
+    }
+
 
 }
 

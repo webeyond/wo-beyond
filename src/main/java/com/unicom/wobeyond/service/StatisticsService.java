@@ -30,4 +30,10 @@ public interface StatisticsService {
      * @return
      */
     DistrictSignCountRespVO selectDistrictSignCount() throws Exception;
+
+    /**
+     * 统计手机卡产品前五名销售数量
+     * @return
+     */
+    ProdTopFiveRespVO selectProdTopFive() throws Exception;
 }

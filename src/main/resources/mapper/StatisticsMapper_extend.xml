@@ -95,5 +95,18 @@
 
  </select>
 
+ <select id="selectProdTopFive" resultType="ProdTopFiveVO">
+
+            SELECT
+                 COUNT(*) AS value,
+                `PROD_NAME` as name
+            FROM busi_order a,prod b
+            WHERE   a.prod_id=b.prod_id
+            GROUP BY   a.prod_id,b.prod_id,b.prod_type,b.prod_name,
+                   b.combo_fee,b.promise_time,b.pre_pay_fee,b.des_pic
+            ORDER BY COUNT(*) DESC
+
+ </select>
+
 
 </mapper>

@@ -88,5 +88,15 @@ public class StatisticsServiceImpl implements StatisticsService {
         return respVO;
     }
 
+    @Override
+    public ProdTopFiveRespVO selectProdTopFive() throws Exception {
+        ProdTopFiveRespVO respVO = new ProdTopFiveRespVO();
+        List<ProdTopFiveVO> list = statisticsMapper_extend.selectProdTopFive();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取手机卡产品前五名销售数量成功！");
+        return respVO;
+    }
+
 
 }

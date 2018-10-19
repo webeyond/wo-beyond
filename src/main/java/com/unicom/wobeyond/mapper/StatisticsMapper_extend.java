@@ -38,6 +38,12 @@ public interface StatisticsMapper_extend {
 	 */
 	List<DistrictSignCountVO> selectDistrictSignCount();
 
+    /**
+     * 统计手机卡产品前五名销售数量
+     * @return
+     */
+    List<ProdTopFiveVO> selectProdTopFive();
+
 
    
 }
