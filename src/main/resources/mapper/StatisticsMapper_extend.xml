@@ -40,8 +40,8 @@
 
  <select id="selectSignCustomerCount" resultType="CustomerCountVO">
 
-		 	SELECT  b.district,
-		 	        COUNT(*) as counts
+		 	SELECT  b.district as name,
+		 	        COUNT(*) as value
             FROM
                     busi_order a,account b
             WHERE a.oper_id=b.operatorid

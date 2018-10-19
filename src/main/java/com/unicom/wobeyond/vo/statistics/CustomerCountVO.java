@@ -2,23 +2,23 @@ package com.unicom.wobeyond.vo.statistics;
 
 public class CustomerCountVO {
 
-    private String district;   //区
+    private String name;   //区
 
-    private int counts;
+    private int value;
 
-    public String getDistrict() {
-        return district;
+    public String getName() {
+        return name;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getCounts() {
-        return counts;
+    public int getValue() {
+        return value;
     }
 
-    public void setCounts(int counts) {
-        this.counts = counts;
+    public void setValue(int value) {
+        this.value = value;
     }
 }
