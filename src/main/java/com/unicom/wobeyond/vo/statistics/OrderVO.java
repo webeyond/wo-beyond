@@ -20,6 +20,8 @@ public class OrderVO {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss") //出参
     private Date busiOrderDate;
 
+    private Integer payFlag;
+
     //------------------------------customer表-------------------------------
 
     private String customername;
@@ -31,7 +33,18 @@ public class OrderVO {
     //------------------------------serial表---------------------------------
 
     private String serialNumber;  //手机号
-    
+
+    //------------------------------其它--------------------------------------
+
+    private String payFlagName;
+
+    public String getPayFlagName() {
+        return payFlagName;
+    }
+
+    public void setPayFlagName(String payFlagName) {
+        this.payFlagName = payFlagName;
+    }
 
     public String getProvince() {
         return province;
@@ -97,17 +110,11 @@ public class OrderVO {
         this.serialNumber = serialNumber;
     }
 
-    @Override
-    public String toString() {
-        return "OrderVO{" +
-                "province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                ", operatorname='" + operatorname + '\'' +
-                ", busiOrderDate=" + busiOrderDate +
-                ", customername='" + customername + '\'' +
-                ", prodName='" + prodName + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                '}';
+    public Integer getPayFlag() {
+        return payFlag;
+    }
+
+    public void setPayFlag(Integer payFlag) {
+        this.payFlag = payFlag;
     }
 }

@@ -5,14 +5,25 @@
  <select id="selectOrderList" resultType="com.unicom.wobeyond.vo.statistics.OrderVO">
 
 		 	SELECT
-		 		A.PROVINCE as province,
-		 		A.CITY as city,
-		 		A.DISTRICT as district,
-		 		T.BUSI_ORDER_DATE as busiOrderDate,
-		 		A.OPERATORNAME as operatorname,
-		 		B.CUSTOMERNAME as customername,
-		 		LEFT(CONCAT(C.SERIAL_NUMBER,''),11) as serialNumber,
-		 		D.PROD_NAME as prodName
+		 		A.PROVINCE AS province,
+		 		A.CITY AS city,
+		 		A.DISTRICT AS district,
+		 		A.OPERATORNAME AS operatorname,
+		 		B.CUSTOMERNAME AS customername,
+		 		LEFT(CONCAT(C.SERIAL_NUMBER,''),11) AS serialNumber,
+		 		D.PROD_NAME AS prodName,
+		 		T.BUSI_ORDER_DATE AS busiOrderDate,
+		 		T.pay_flag AS payFlag,
+				(
+					CASE
+					WHEN T.pay_flag=1 THEN
+					    '已签约'
+					WHEN T.pay_flag=0 THEN
+					    '未签约'
+					ELSE
+					    '未知'
+					END
+				) payFlagName
 			FROM
 					busi_order T,
 					account A,
@@ -26,7 +37,7 @@
 
  </select>
 
-    <select id="selectSignCustomerCount" resultType="CustomerCountVO">
+ <select id="selectSignCustomerCount" resultType="CustomerCountVO">
 
 		 	SELECT  b.district,
 		 	        COUNT(*) as counts
