@@ -3,6 +3,7 @@ package com.unicom.wobeyond.mapper;
 
 import com.unicom.wobeyond.vo.statistics.CustomerCountVO;
 import com.unicom.wobeyond.vo.statistics.OrderVO;
+import com.unicom.wobeyond.vo.statistics.SignFunnelCountVO;
 
 import java.util.List;
 
@@ -20,6 +21,12 @@ public interface StatisticsMapper_extend {
      * @return
      */
 	List<CustomerCountVO> selectSignCustomerCount();
+
+	/**
+	 * 统计签约漏斗图
+	 * @return
+	 */
+	List<SignFunnelCountVO> selectSignFunnelCount();
 
 
    

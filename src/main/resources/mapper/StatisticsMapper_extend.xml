@@ -13,6 +13,7 @@
 		 		LEFT(CONCAT(C.SERIAL_NUMBER,''),11) AS serialNumber,
 		 		D.PROD_NAME AS prodName,
 		 		T.BUSI_ORDER_DATE AS busiOrderDate,
+		 		T.BUSI_CELLNO AS busiCellno,
 		 		T.pay_flag AS payFlag,
 				(
 					CASE
@@ -46,6 +47,22 @@
             WHERE a.oper_id=b.operatorid
             AND a.pay_flag=1
             GROUP BY b.district;
+
+ </select>
+
+ <select id="selectSignFunnelCount" resultType="SignFunnelCountVO">
+
+     SELECT * FROM (
+         (SELECT COUNT(*) AS notsign FROM busi_order WHERE  pay_flag=0) a,
+         -- 一个月内签约 14
+         (SELECT COUNT(*) AS monthsign FROM busi_order WHERE busi_order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) AND NOW()) b,
+         -- 一年以上签约
+         (SELECT COUNT(*) AS oneyearsign FROM busi_order WHERE busi_order_date
+          &lt; DATE_SUB(NOW(),INTERVAL 12 MONTH) ) c,
+         -- 三年以上签约
+         (SELECT COUNT(*) AS threeyearsign FROM busi_order WHERE busi_order_date
+          &lt; DATE_SUB(NOW(),INTERVAL 36 MONTH)) d
+     )
 
  </select>
 

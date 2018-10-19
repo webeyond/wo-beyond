@@ -6,9 +6,7 @@ import com.unicom.wobeyond.constant.ApplicationConstant;
 import com.unicom.wobeyond.mapper.StatisticsMapper_extend;
 import com.unicom.wobeyond.service.StatisticsService;
 import com.unicom.wobeyond.vo.PaginaionVO;
-import com.unicom.wobeyond.vo.statistics.CustomerCountRespVO;
-import com.unicom.wobeyond.vo.statistics.CustomerCountVO;
-import com.unicom.wobeyond.vo.statistics.OrderVO;
+import com.unicom.wobeyond.vo.statistics.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +57,16 @@ public class StatisticsServiceImpl implements StatisticsService {
         respVO.setMsg("获取每个区签约用户数量成功！");
         return respVO;
     }
+
+    @Override
+    public SignFunnelCountRespVO selectSignFunnelCount() throws Exception {
+        SignFunnelCountRespVO respVO = new SignFunnelCountRespVO();
+        List<SignFunnelCountVO> list = statisticsMapper_extend.selectSignFunnelCount();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取签约漏斗统计成功！");
+        return respVO;
+    }
+
+
 }

@@ -22,6 +22,8 @@ public class OrderVO {
 
     private Integer payFlag;
 
+    private Integer busiCellno;
+
     //------------------------------customer表-------------------------------
 
     private String customername;
@@ -116,5 +118,13 @@ public class OrderVO {
 
     public void setPayFlag(Integer payFlag) {
         this.payFlag = payFlag;
+    }
+
+    public Integer getBusiCellno() {
+        return busiCellno;
+    }
+
+    public void setBusiCellno(Integer busiCellno) {
+        this.busiCellno = busiCellno;
     }
 }
