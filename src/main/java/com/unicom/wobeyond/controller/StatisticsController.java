@@ -159,6 +159,27 @@ public class StatisticsController {
         }
     }
 
+    /**
+     * @return SerialHeatAnalysisRespVO
+     * @Title: selectSerialHeatAnalysis
+     * @Description: 统计靓号热度分析
+     */
+    @ResponseBody
+    @RequestMapping(value = "v1/selectSerialHeatAnalysis", method= RequestMethod.POST)
+    @ApiOperation(value="统计靓号热度分析", response = SerialHeatAnalysisRespVO.class)
+    public SerialHeatAnalysisRespVO selectSerialHeatAnalysis() {
+        try {
+            return statisticsService.selectSerialHeatAnalysis();
+        } catch (Exception e) {
+            e.printStackTrace();
+            SerialHeatAnalysisRespVO respVO = new SerialHeatAnalysisRespVO();
+            respVO.setMsg(e.getMessage());
+            respVO.setResult(ApplicationConstant.RESULT_FALTURE);
+            logger.error(respVO.getMsg());
+            return respVO;
+        }
+    }
+
 
 }
 

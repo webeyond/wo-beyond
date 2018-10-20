@@ -36,4 +36,10 @@ public interface StatisticsService {
      * @return
      */
     ProdTopFiveRespVO selectProdTopFive() throws Exception;
+
+    /**
+     * 统计手机卡产品前五名销售数量
+     * @return
+     */
+    SerialHeatAnalysisRespVO selectSerialHeatAnalysis() throws Exception;
 }

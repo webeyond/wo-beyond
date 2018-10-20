@@ -44,6 +44,12 @@ public interface StatisticsMapper_extend {
      */
     List<StringIntegerVO> selectProdTopFive();
 
+    /**
+     * 统计靓号热度分析
+     * @return
+     */
+    List<SerialHeatAnalysisVO> selectSerialHeatAnalysis();
+
 
    
 }

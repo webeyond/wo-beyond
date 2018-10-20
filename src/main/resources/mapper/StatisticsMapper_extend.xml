@@ -108,5 +108,21 @@
 
  </select>
 
+ <select id="selectSerialHeatAnalysis" resultType="SerialHeatAnalysisVO">
+
+            SELECT
+                    b.feature_type as featureType,
+                    b.feature_name as featureName,
+                    b.good_type as goodType,
+                    c.DISTRICT as district,
+                    COUNT(*) as counts
+            FROM busi_order a,SERIAL b,account c
+            WHERE a.serial_id=b.serial_id
+            AND a.oper_id=c.operatorid
+            GROUP BY b.feature_type,b.feature_name,b.good_type,c.DISTRICT
+            ORDER BY c.DISTRICT
+
+ </select>
+
 
 </mapper>

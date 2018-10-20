@@ -128,5 +128,15 @@ public class StatisticsServiceImpl implements StatisticsService {
         return respVO;
     }
 
+    @Override
+    public SerialHeatAnalysisRespVO selectSerialHeatAnalysis() throws Exception {
+        SerialHeatAnalysisRespVO respVO = new SerialHeatAnalysisRespVO();
+        List<SerialHeatAnalysisVO> list = statisticsMapper_extend.selectSerialHeatAnalysis();
+        respVO.setList(list);
+        respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
+        respVO.setMsg("获取靓号热度分析成功！");
+        return respVO;
+    }
+
 
 }
