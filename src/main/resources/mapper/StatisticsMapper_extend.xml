@@ -91,7 +91,7 @@
  <!--查询数据库里的视图-->
  <select id="selectDistrictSignCount" resultType="DistrictSignCountVO">
 
-             SELECT * FROM district_count1;
+              SELECT * FROM district_count
 
  </select>
 

@@ -2,17 +2,17 @@ package com.unicom.wobeyond.vo.statistics;
 
 import com.unicom.wobeyond.vo.BaseRespVO;
 
-import java.util.List;
+import java.util.Map;
 
 public class DistrictSignCountRespVO extends BaseRespVO {
 
-    private List<DistrictSignCountVO> list;
+    private Map<String, int[]> map;
 
-    public List<DistrictSignCountVO> getList() {
-        return list;
+    public Map<String, int[]> getMap() {
+        return map;
     }
 
-    public void setList(List<DistrictSignCountVO> list) {
-        this.list = list;
+    public void setMap(Map<String, int[]> map) {
+        this.map = map;
     }
 }

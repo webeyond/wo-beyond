@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
@@ -80,9 +83,29 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public DistrictSignCountRespVO selectDistrictSignCount() throws Exception {
+
         DistrictSignCountRespVO respVO = new DistrictSignCountRespVO();
+        Map<String, int[]> map = new HashMap<>();
+        map.put("北区", new int[10]);
+        map.put("嘉定", new int[10]);
+        map.put("宝山", new int[10]);
+        map.put("闵行", new int[10]);
+        map.put("松江", new int[10]);
+        map.put("西区", new int[10]);
+        map.put("奉贤", new int[10]);
+        map.put("崇明", new int[10]);
+        map.put("青浦", new int[10]);
+        map.put("东区", new int[10]);
         List<DistrictSignCountVO> list = statisticsMapper_extend.selectDistrictSignCount();
-        respVO.setList(list);
+        for (DistrictSignCountVO vo : list) {
+            String district = vo.getDistrict();
+            if (map.containsKey(district)) {
+                int[] ints = map.get(district);
+                ints[vo.getMonths() - 1] = vo.getCounts();
+                map.replace(district, ints);
+            }
+        }
+        respVO.setMap(map);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取统计区县签约数量成功！");
         return respVO;

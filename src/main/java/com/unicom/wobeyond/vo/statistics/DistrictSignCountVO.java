@@ -6,7 +6,7 @@ public class DistrictSignCountVO {
 
     private Integer counts;
 
-    private String months;
+    private Integer months;
 
     public String getDistrict() {
         return district;
@@ -24,11 +24,11 @@ public class DistrictSignCountVO {
         this.counts = counts;
     }
 
-    public String getMonths() {
+    public Integer getMonths() {
         return months;
     }
 
-    public void setMonths(String months) {
+    public void setMonths(Integer months) {
         this.months = months;
     }
 }
