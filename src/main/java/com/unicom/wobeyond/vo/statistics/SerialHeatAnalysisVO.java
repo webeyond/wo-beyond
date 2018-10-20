@@ -8,9 +8,11 @@ public class SerialHeatAnalysisVO {
 
     private String goodType;
 
-    private String counts;
+    private int counts;
 
     private String district;
+
+    private int featureNumber;
 
     public String getFeatureType() {
         return featureType;
@@ -36,11 +38,11 @@ public class SerialHeatAnalysisVO {
         this.goodType = goodType;
     }
 
-    public String getCounts() {
+    public int getCounts() {
         return counts;
     }
 
-    public void setCounts(String counts) {
+    public void setCounts(int counts) {
         this.counts = counts;
     }
 
@@ -50,5 +52,13 @@ public class SerialHeatAnalysisVO {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public int getFeatureNumber() {
+        return featureNumber;
+    }
+
+    public void setFeatureNumber(int featureNumber) {
+        this.featureNumber = featureNumber;
     }
 }

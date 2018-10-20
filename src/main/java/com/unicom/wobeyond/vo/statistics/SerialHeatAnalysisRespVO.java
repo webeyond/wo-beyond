@@ -6,13 +6,13 @@ import java.util.List;
 
 public class SerialHeatAnalysisRespVO extends BaseRespVO {
 
-    List<SerialHeatAnalysisVO> list;
+    List<StringArrayArrayVO> list;
 
-    public List<SerialHeatAnalysisVO> getList() {
+    public List<StringArrayArrayVO> getList() {
         return list;
     }
 
-    public void setList(List<SerialHeatAnalysisVO> list) {
+    public void setList(List<StringArrayArrayVO> list) {
         this.list = list;
     }
 }

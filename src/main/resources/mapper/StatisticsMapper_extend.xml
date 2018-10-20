@@ -115,7 +115,8 @@
                     b.feature_name as featureName,
                     b.good_type as goodType,
                     c.DISTRICT as district,
-                    COUNT(*) as counts
+                    COUNT(*) as counts,
+                    IF(b.`FEATURE_NAME`='发发发发',0,IF(b.`FEATURE_NAME`='六六六六',1,IF(b.`FEATURE_NAME`='我爱你',2,IF(b      .`FEATURE_NAME`='一生一世',3,4)))) AS featureNumber
             FROM busi_order a,SERIAL b,account c
             WHERE a.serial_id=b.serial_id
             AND a.oper_id=c.operatorid

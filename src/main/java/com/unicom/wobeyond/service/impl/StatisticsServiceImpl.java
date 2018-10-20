@@ -130,9 +130,34 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public SerialHeatAnalysisRespVO selectSerialHeatAnalysis() throws Exception {
+
         SerialHeatAnalysisRespVO respVO = new SerialHeatAnalysisRespVO();
+        List<StringArrayArrayVO> respList = new ArrayList<>();
+        respList.add(new StringArrayArrayVO("北区", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("嘉定", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("宝山", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("闵行", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("松江", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("西区", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("奉贤", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("崇明", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("青浦", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("东区", new String[4],new int[4]));
+
         List<SerialHeatAnalysisVO> list = statisticsMapper_extend.selectSerialHeatAnalysis();
-        respVO.setList(list);
+        for (SerialHeatAnalysisVO vo : list) {
+            String district = vo.getDistrict();
+            for (StringArrayArrayVO saavo : respList) {
+                if (saavo.getName().equals(district)) {
+                    String[] strings = saavo.getFeatureNameArray();
+                    strings[vo.getFeatureNumber()] = vo.getFeatureName();
+                    int[] ints = saavo.getCountsArray();
+                    ints[vo.getFeatureNumber()] = vo.getCounts();
+                }
+            }
+
+        }
+        respVO.setList(respList);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取靓号热度分析成功！");
         return respVO;
