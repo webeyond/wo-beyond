@@ -12,7 +12,7 @@ public class SerialHeatAnalysisVO {
 
     private String district;
 
-    private int featureNumber;
+    private int districtNumber;
 
     public String getFeatureType() {
         return featureType;
@@ -54,11 +54,11 @@ public class SerialHeatAnalysisVO {
         this.district = district;
     }
 
-    public int getFeatureNumber() {
-        return featureNumber;
+    public int getDistrictNumber() {
+        return districtNumber;
     }
 
-    public void setFeatureNumber(int featureNumber) {
-        this.featureNumber = featureNumber;
+    public void setDistrictNumber(int districtNumber) {
+        this.districtNumber = districtNumber;
     }
 }

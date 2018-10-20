@@ -133,29 +133,25 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         SerialHeatAnalysisRespVO respVO = new SerialHeatAnalysisRespVO();
         List<StringArrayArrayVO> respList = new ArrayList<>();
-        respList.add(new StringArrayArrayVO("北区", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("嘉定", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("宝山", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("闵行", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("松江", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("西区", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("奉贤", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("崇明", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("青浦", new String[4],new int[4]));
-        respList.add(new StringArrayArrayVO("东区", new String[4],new int[4]));
+        respList.add(new StringArrayArrayVO("发发发发", new String[10],new int[10]));
+        respList.add(new StringArrayArrayVO("六六六六", new String[10],new int[10]));
+        respList.add(new StringArrayArrayVO("我爱你", new String[10],new int[10]));
+        respList.add(new StringArrayArrayVO("一生一世", new String[10],new int[10]));
 
         List<SerialHeatAnalysisVO> list = statisticsMapper_extend.selectSerialHeatAnalysis();
         for (SerialHeatAnalysisVO vo : list) {
-            String district = vo.getDistrict();
+            String featureName = vo.getFeatureName();
             for (StringArrayArrayVO saavo : respList) {
-                if (saavo.getName().equals(district)) {
-                    String[] strings = saavo.getFeatureNameArray();
-                    strings[vo.getFeatureNumber()] = vo.getFeatureName();
+                if (saavo.getName().equals(featureName)) {
+                    String[] strings = saavo.getDistrictArray();
+                    strings[vo.getDistrictNumber()] = vo.getDistrict();
                     int[] ints = saavo.getCountsArray();
-                    ints[vo.getFeatureNumber()] = vo.getCounts();
+                    ints[vo.getDistrictNumber()] = vo.getCounts();
+                    if(vo.getDistrict().equals("东区")){
+                        ints[vo.getDistrictNumber()] = vo.getCounts()/3;
+                    }
                 }
             }
-
         }
         respVO.setList(respList);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);

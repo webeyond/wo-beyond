@@ -4,16 +4,16 @@ public class StringArrayArrayVO {
 
     private String name;
 
-    private String[] featureNameArray;
+    private String[] districtArray;
 
     private int[] countsArray;
 
     public StringArrayArrayVO() {
     }
 
-    public StringArrayArrayVO(String name, String[] featureNameArray, int[] countsArray) {
+    public StringArrayArrayVO(String name, String[] districtArray, int[] countsArray) {
         this.name = name;
-        this.featureNameArray = featureNameArray;
+        this.districtArray = districtArray;
         this.countsArray = countsArray;
     }
 
@@ -25,12 +25,12 @@ public class StringArrayArrayVO {
         this.name = name;
     }
 
-    public String[] getFeatureNameArray() {
-        return featureNameArray;
+    public String[] getDistrictArray() {
+        return districtArray;
     }
 
-    public void setFeatureNameArray(String[] featureNameArray) {
-        this.featureNameArray = featureNameArray;
+    public void setDistrictArray(String[] districtArray) {
+        this.districtArray = districtArray;
     }
 
     public int[] getCountsArray() {
