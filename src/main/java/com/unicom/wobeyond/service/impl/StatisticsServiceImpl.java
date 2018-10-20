@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
@@ -85,6 +82,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     public DistrictSignCountRespVO selectDistrictSignCount() throws Exception {
 
         DistrictSignCountRespVO respVO = new DistrictSignCountRespVO();
+        //先定义map结构，把数据格式化到map里
         Map<String, int[]> map = new HashMap<>();
         map.put("北区", new int[10]);
         map.put("嘉定", new int[10]);
@@ -96,6 +94,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         map.put("崇明", new int[10]);
         map.put("青浦", new int[10]);
         map.put("东区", new int[10]);
+
         List<DistrictSignCountVO> list = statisticsMapper_extend.selectDistrictSignCount();
         for (DistrictSignCountVO vo : list) {
             String district = vo.getDistrict();
@@ -105,7 +104,15 @@ public class StatisticsServiceImpl implements StatisticsService {
                 map.replace(district, ints);
             }
         }
-        respVO.setMap(map);
+
+        //把map中的数据转成返回格式
+        List<StringArrayVO> respList = new ArrayList<>();
+        Set<Map.Entry<String, int[]>> entries = map.entrySet();
+        for (Map.Entry<String, int[]> entry : entries) {
+            respList.add(new StringArrayVO(entry.getKey(), entry.getValue()));
+        }
+
+        respVO.setList(respList);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取统计区县签约数量成功！");
         return respVO;
