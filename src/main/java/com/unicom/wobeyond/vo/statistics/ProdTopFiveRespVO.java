@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ProdTopFiveRespVO extends BaseRespVO {
 
-    private List<ProdTopFiveVO> list;
+    private List<StringIntegerVO> list;
 
-    public List<ProdTopFiveVO> getList() {
+    public List<StringIntegerVO> getList() {
         return list;
     }
 
-    public void setList(List<ProdTopFiveVO> list) {
+    public void setList(List<StringIntegerVO> list) {
         this.list = list;
     }
 }

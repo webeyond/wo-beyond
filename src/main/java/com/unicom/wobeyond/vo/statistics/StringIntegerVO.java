@@ -1,10 +1,10 @@
 package com.unicom.wobeyond.vo.statistics;
 
-public class ProdTopFiveVO {
-
-    private Integer value;
+public class StringIntegerVO {
 
     private String name;
+
+    private Integer value;
 
     public Integer getValue() {
         return value;

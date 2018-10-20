@@ -78,11 +78,11 @@ public class StatisticsController {
     /**
      * @return SignFunnelCountRespVO
      * @Title: selectSignFunnelCount
-     * @Description: 统计签约漏斗图
+     * @Description: 统计签约情况漏斗图
      */
     @ResponseBody
     @RequestMapping(value = "v1/selectSignFunnelCount", method= RequestMethod.POST)
-    @ApiOperation(value="统计签约漏斗图", response = SignFunnelCountRespVO.class)
+    @ApiOperation(value="统计签约情况漏斗图", response = SignFunnelCountRespVO.class)
     public SignFunnelCountRespVO selectSignFunnelCount() {
         try {
             return statisticsService.selectSignFunnelCount();
@@ -120,11 +120,11 @@ public class StatisticsController {
     /**
      * @return DistrictSignCountRespVO
      * @Title: selectDistrictSignCount
-     * @Description: 统计区县签约数量
+     * @Description: 统计区县近十个月签约数量
      */
     @ResponseBody
     @RequestMapping(value = "v1/selectDistrictSignCount", method= RequestMethod.POST)
-    @ApiOperation(value="统计区县签约数量", response = DistrictSignCountRespVO.class)
+    @ApiOperation(value="统计区县近十个月签约数量", response = DistrictSignCountRespVO.class)
     public DistrictSignCountRespVO selectDistrictSignCount() {
         try {
             return statisticsService.selectDistrictSignCount();

@@ -51,7 +51,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     public CustomerCountRespVO selectSignCustomerCount() throws Exception {
 
         CustomerCountRespVO respVO = new CustomerCountRespVO();
-        List<CustomerCountVO> list = statisticsMapper_extend.selectSignCustomerCount();
+        List<StringIntegerVO> list = statisticsMapper_extend.selectSignCustomerCount();
         respVO.setList(list);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取每个区签约用户数量成功！");
@@ -64,7 +64,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         List<SignFunnelCountVO> list = statisticsMapper_extend.selectSignFunnelCount();
         respVO.setList(list);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
-        respVO.setMsg("获取签约漏斗统计成功！");
+        respVO.setMsg("获取签约情况漏斗统计成功！");
         return respVO;
     }
 
@@ -114,14 +114,14 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         respVO.setList(respList);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
-        respVO.setMsg("获取统计区县签约数量成功！");
+        respVO.setMsg("获取区县近十个月签约数量成功！");
         return respVO;
     }
 
     @Override
     public ProdTopFiveRespVO selectProdTopFive() throws Exception {
         ProdTopFiveRespVO respVO = new ProdTopFiveRespVO();
-        List<ProdTopFiveVO> list = statisticsMapper_extend.selectProdTopFive();
+        List<StringIntegerVO> list = statisticsMapper_extend.selectProdTopFive();
         respVO.setList(list);
         respVO.setResult(ApplicationConstant.RESULT_SUCCESS);
         respVO.setMsg("获取手机卡产品前五名销售数量成功！");

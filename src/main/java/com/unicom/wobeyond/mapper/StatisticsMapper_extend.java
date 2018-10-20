@@ -18,7 +18,7 @@ public interface StatisticsMapper_extend {
      * 统计每个区签约用户人数
      * @return
      */
-	List<CustomerCountVO> selectSignCustomerCount();
+	List<StringIntegerVO> selectSignCustomerCount();
 
 	/**
 	 * 统计签约漏斗图
@@ -42,7 +42,7 @@ public interface StatisticsMapper_extend {
      * 统计手机卡产品前五名销售数量
      * @return
      */
-    List<ProdTopFiveVO> selectProdTopFive();
+    List<StringIntegerVO> selectProdTopFive();
 
 
    

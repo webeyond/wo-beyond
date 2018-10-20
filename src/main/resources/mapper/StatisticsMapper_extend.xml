@@ -38,7 +38,7 @@
 
  </select>
 
- <select id="selectSignCustomerCount" resultType="CustomerCountVO">
+ <select id="selectSignCustomerCount" resultType="StringIntegerVO">
 
 		 	SELECT  b.district as name,
 		 	        COUNT(*) as value
@@ -95,7 +95,7 @@
 
  </select>
 
- <select id="selectProdTopFive" resultType="ProdTopFiveVO">
+ <select id="selectProdTopFive" resultType="StringIntegerVO">
 
             SELECT
                  COUNT(*) AS value,

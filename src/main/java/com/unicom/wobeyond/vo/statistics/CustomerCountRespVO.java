@@ -6,13 +6,13 @@ import java.util.List;
 
 public class CustomerCountRespVO extends BaseRespVO {
 
-    private List<CustomerCountVO> list;
+    private List<StringIntegerVO> list;
 
-    public List<CustomerCountVO> getList() {
+    public List<StringIntegerVO> getList() {
         return list;
     }
 
-    public void setList(List<CustomerCountVO> list) {
+    public void setList(List<StringIntegerVO> list) {
         this.list = list;
     }
 }
