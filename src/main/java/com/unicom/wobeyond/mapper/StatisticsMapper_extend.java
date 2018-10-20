@@ -4,6 +4,7 @@ package com.unicom.wobeyond.mapper;
 import com.unicom.wobeyond.vo.statistics.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -11,8 +12,12 @@ import java.util.List;
  * @Description: TODO (统计功能mapper)
  */
 public interface StatisticsMapper_extend {
-	
-	List<OrderVO> selectOrderList();
+
+    /**
+     * 查询订单列表
+     * @return
+     */
+	List<OrderVO> selectOrderList(Map<String, Object> params);
 
     /**
      * 统计每个区签约用户人数

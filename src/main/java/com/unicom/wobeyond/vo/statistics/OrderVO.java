@@ -28,6 +28,8 @@ public class OrderVO {
 
     private String customername;
 
+    private String tmpphone;
+
     //------------------------------prod表-----------------------------------
 
     private String prodName;
@@ -126,5 +128,13 @@ public class OrderVO {
 
     public void setBusiCellno(Integer busiCellno) {
         this.busiCellno = busiCellno;
+    }
+
+    public String getTmpphone() {
+        return tmpphone;
+    }
+
+    public void setTmpphone(String tmpphone) {
+        this.tmpphone = tmpphone;
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.unicom.wobeyond.mapper.StatisticsMapper_extend" >
   
- <select id="selectOrderList" resultType="com.unicom.wobeyond.vo.statistics.OrderVO">
+ <select id="selectOrderList" resultType="com.unicom.wobeyond.vo.statistics.OrderVO" parameterType="java.util.Map">
 
 		 	SELECT
 		 		A.PROVINCE AS province,
@@ -10,6 +10,7 @@
 		 		A.DISTRICT AS district,
 		 		A.OPERATORNAME AS operatorname,
 		 		B.CUSTOMERNAME AS customername,
+		 		B.TMPPHONE AS tmpphone,
 		 		LEFT(CONCAT(C.SERIAL_NUMBER,''),11) AS serialNumber,
 		 		D.PROD_NAME AS prodName,
 		 		T.BUSI_ORDER_DATE AS busiOrderDate,
@@ -35,6 +36,10 @@
 			AND T.CUSTID=B.CUSTID
 			AND T.SERIAL_ID=C.SERIAL_ID
 			AND T.PROD_ID=D.PROD_ID
+
+         <if test="payFlag != null " >
+             and T.pay_flag = #{payFlag}
+         </if>
 
  </select>
 

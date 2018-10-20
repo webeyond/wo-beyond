@@ -34,7 +34,9 @@ public class StatisticsServiceImpl implements StatisticsService {
         }
         PageHelper.startPage(page, pageSize);
 
-        List<OrderVO> list = statisticsMapper_extend.selectOrderList();
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("payFlag", req.getPayFlag());
+        List<OrderVO> list = statisticsMapper_extend.selectOrderList(params);
         PageInfo<OrderVO> pageInfo = new PageInfo<OrderVO>(list);
 
         respVO.setTotalPage(pageInfo.getPages());
